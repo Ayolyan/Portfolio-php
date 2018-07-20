@@ -5,14 +5,13 @@ try {
     
     if (isset($_GET['action'])) {
         switch ($_GET['action']) {
-            case 'home':
+            case 'presentation':
                 home();
                 break;
             default:
                 home();
         }
     } else {
-//        echo("ETTS");
         home();
     }
     
