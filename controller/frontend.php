@@ -38,6 +38,15 @@ function gallery() {
     require('view/frontend/galleryView.php');
 }
 
+function galleryItem() {
+    $nav = new Nav('gallery');
+
+    $leftNav = $nav->getLeftNav();
+    $rightNav = $nav->getRightNav();
+
+    require('view/frontend/galleryItemView.php');
+}
+
 function contact() {
     $nav = new Nav('contact');
     

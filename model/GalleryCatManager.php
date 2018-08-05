@@ -10,7 +10,7 @@ class GalleryCatManager extends Manager {
         
         $request->bindValue(':galCatName', $galleryCat->getName());
         
-        $request->execute;
+        $request->execute();
         
     }
     

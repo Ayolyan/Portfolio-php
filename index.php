@@ -15,7 +15,11 @@ try {
                 chinesePortrait();
                 break;
             case 'gallery':
-                gallery();
+                if (isset($_GET['item'])) {
+                    galleryItem();
+                } else {
+                    gallery();
+                }
                 break;
             case 'contact':
                 contact();
