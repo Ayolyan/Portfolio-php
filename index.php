@@ -8,6 +8,18 @@ try {
             case 'presentation':
                 home();
                 break;
+            case 'skills':
+                skills();
+                break;
+            case 'chinesePortrait':
+                chinesePortrait();
+                break;
+            case 'gallery':
+                gallery();
+                break;
+            case 'contact':
+                contact();
+                break;
             default:
                 home();
         }

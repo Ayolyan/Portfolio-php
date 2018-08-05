@@ -1,0 +1,749 @@
+/* DEFINITION POLICES DE CARACTERE */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* -------------------- */
+/* ------- BODY ------- */
+/* -------------------- */
+
+body {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f1f1f1;
+    overflow: hidden;
+}
+
+body>* {
+    transform: skewX(-16deg);
+    transform-origin: top;
+}
+
+body>*>* {
+    transform: skewX(16deg);
+}
+
+body .contenu {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+body .contenu > * {
+    transform-origin: top;
+}
+
+/* ------------------ */
+/* --- SEPARATEUR --- */
+/* ------------------ */
+
+.separateur {
+    min-width: 2vw;
+    height: calc(100vh - 10px);
+    background-color: #ffaa00;
+    border-left: 1.5vw solid #111;
+    border-right: 5px solid #999;
+}
+
+/* --------------- */
+/* ----- Nav ----- */
+/* --------------- */
+
+nav {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.leftNav {
+    justify-content: flex-end;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 5px;
+    font-size: 1.33333333333rem;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    background-color: #ffaa00;
+}
+
+.rightNav a, .leftNav a:nth-last-child(n+2){
+    margin-right: calc((1.33333333333rem + 10px)* 0.287); /* opposÃ© == adjacent * tan(16deg) */
+}
+
+nav .selectPage {
+    font-size: 2rem;
+    margin-right: calc((2rem + 10px) * 0.287);
+}
+
+nav a:hover, nav a:hover::after, nav a:hover::before {
+    background-color: #ff9900;
+}
+
+nav a:active, nav a:active::after, nav a:active::before {
+    background-color: #ffbb00;
+}
+
+nav a::after, nav a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffaa00;
+    transform-origin: top;
+    transform: skew(-16deg);
+    z-index: -1;
+}
+nav a::after {    
+    transform-origin: bottom;
+}
+
+nav a + a {
+    margin-left: 1rem;
+}
+
+nav a svg {
+    height: 1em;
+    width: 0em;
+    fill: #fff;
+    transition: width 1s, margin 1s;
+}
+
+.selectPage svg {
+    width: 1em;
+    margin-right: 5px;
+}
+
+nav a:hover svg {
+    display: initial;
+    margin-right: 5px;
+    width: 1em;
+}
+
+nav h1 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* ---------------- */
+/* ----- MAIN ----- */
+/* ---------------- */
+
+main {
+    flex: 1;
+    overflow-y:auto;
+}
+
+h2 {
+    margin: 0 0 5px 0;
+    min-width: 100%;
+}
+
+h3 {
+    margin: 0 0 5px 0;
+    font-weight: normal;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #ffaa00, rgba(0,0,0,0)) 1;
+}
+
+/* ------------- */
+/* --- ASIDE --- */
+/* ------------- */
+
+aside {
+    flex: 1;
+    min-width: calc((100vh - 10px) * 0.287 - 60px);
+    position: relative;
+    padding: 30px;
+    overflow: hidden;
+}
+
+aside>* {
+    transform-origin: bottom;
+}
+
+aside::after {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    content: "";
+    transform: skewX(16deg);
+    z-index: -1;
+}
+
+.contactBody aside::after {
+    background: url(images/contact.jpg) no-repeat;
+    background-size: auto 100%;
+}
+
+.accueilBody aside::after {
+    left: calc(50vh * 0.287);
+    background: url(images/accueil.jpg) no-repeat;
+    background-size: auto 100%;
+}
+
+.competencesBody aside::after {
+    background: url(images/competences.jpg) no-repeat;
+    background-size: auto 100%;
+}
+
+.portraitChinoisBody aside {
+    flex: initial;
+    min-width: calc(100vh * 1200 / 1600 - 60px);
+}
+
+.portraitChinoisBody aside::after {
+    left: calc(50vh * 0.287);
+    background: url(images/pagodeChinoise.jpg) no-repeat;
+    background-size: auto 100%;
+}
+
+/* --------------- */
+/* --- SECTION --- */
+/* --------------- */
+
+section {
+    margin-bottom: 1rem;
+}
+
+section p {
+    text-align: justify;
+}
+
+/* --------------- */
+/* --- LISTES --- */
+/* --------------- */
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul svg {
+    position: relative;
+    height: 2em;
+    width: 2em;
+    padding: 5px;
+    margin-right: 1rem;
+    fill: #fff;
+    background-color: #fa0;
+    z-index: 1;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: calc(2em + 10px);
+    margin-bottom: 1rem;
+    background-color: #fff;
+}
+
+li::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: calc(2em + 10px);
+    height: calc(2em + 10px);
+    background-color: #fa0;
+    transform: skewX(-16deg);
+    transform-origin: bottom;
+}
+
+/* ---------------------- */
+/* ----- FORMULAIRE ----- */
+/* ---------------------- */
+
+form {
+    text-align: center;
+}
+
+form div {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.textAreaBox {
+    flex-direction: column;
+}
+
+label {
+    position: relative;
+    padding: 3px 6px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #ffaa00;
+    z-index: 100;
+}
+
+label::before {
+    position: absolute;
+    top: 0; right: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    transform: skewX(-16deg);
+    transform-origin: bottom;
+    z-index: -1;
+}
+
+.textAreaBox label::before {
+    display: none;
+}
+
+label span {
+    font-weight: bold;
+    color: #ee0000;
+}
+
+input {
+    transition: border 0.1s;
+}
+
+input + label {
+    margin-left: 1rem;
+}
+
+input[type="text"], input[type="email"] {
+    flex: 1;
+    position: relative;
+    padding-left: 10px;
+    border: none;
+    z-index: 1;
+}
+
+input:hover, input:focus {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, #ffaa00, rgba(0,0,0,0)) 1;
+    outline: none;
+}
+
+input[required]:valid {
+    background-color: #99ff99;
+}
+
+input[type="submit"] {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ffaa00;
+    border: none;
+    cursor: pointer;
+    transition: background 0.4s, text-shadow 0.4s;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff9900;
+    text-shadow: 0.5px 1px 1.5px rgba(0,0,0, 0.5);
+}
+
+input[type="submit"]:active {
+    background-color: #ffbb00;
+    transform: skewX(-16deg);
+    text-shadow: 0.5px 1px 1.5px rgba(0,0,0, 0.5);
+}
+
+textarea {
+    flex: 1;
+    border: none;
+    font-size: 1rem;
+    transition: border 0.1s;
+}
+
+textarea:hover, textarea:focus {
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-image: linear-gradient(to bottom, #ffaa00, rgba(0,0,0,0)) 1;
+    outline: none;
+}
+
+/* ------------------------ */
+/* ----- PROGRESS BAR ----- */
+/* ------------------------ */
+
+progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 1.2rem;
+    width: calc(100% - 1.2rem);
+    transform: skewX(-16deg);
+    transform-origin: bottom;
+    visibility: visible;
+}
+
+::-webkit-progress-value {
+    background-color: orange;
+}
+
+.progressBox {
+    position: relative;
+}
+
+.indcateurProgress {
+    position: absolute;
+    top: 0; left: 1em;
+    color: #fff;
+}
+
+/* ---------------------------- */
+/* ----- FAUSSE SCROLLBAR ----- */
+/* ---------------------------- */
+
+#fausseScrollbar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 20vw;
+    height: 10px;
+    text-align: center;
+    font-size: 9px;
+    color: #111;
+    background-color: #ffaa00;
+    transform: skewX(-16deg) translateX(-5px);
+}
+
+.contactBody #fausseScrollbar {
+    border-left: 0px solid #111;
+    border-right: calc(80vw + 10px) solid #111;
+    animation: scrollContact 1s; 
+}
+.accueilBody #fausseScrollbar {
+    border-left: calc(20vw + 5px) solid #111;
+    border-right: calc(60vw + 5px) solid #111;
+    animation: scrollAccueil 1s; 
+}
+.competencesBody #fausseScrollbar {
+    border-left: calc(40vw + 5px) solid #111;
+    border-right: calc(40vw + 5px) solid #111;
+    animation: scrollCompetences 1s; 
+}
+.portraitChinoisBody #fausseScrollbar {
+    border-left: calc(60vw + 5px) solid #111;
+    border-right: calc(20vw + 5px) solid #111;
+    animation: scrollPortraitChinois 1s; 
+}
+.galerieBody #fausseScrollbar {
+    border-left: calc(80vw + 10px) solid #111;
+    border-right: 0px solid #111;
+    animation: scrollGalerie 1s; 
+}
+
+@keyframes scrollContact {
+    from {
+        border-left: calc(60vw + 5px) solid #111;
+        border-right: calc(20vw + 5px) solid #111;
+    }
+}
+@keyframes scrollAccueil {
+    0%, 40%, 80% {
+        border-left: calc(18vw + 5px) solid #111;
+        border-right: calc(62vw + 5px) solid #111;
+    }
+    20%, 60% {
+        border-left: calc(22vw + 5px) solid #111;
+        border-right: calc(58vw + 5px) solid #111;
+    }
+    100% {
+        border-left: calc(20vw + 5px) solid #111;
+        border-right: calc(60vw + 5px) solid #111;
+    }    
+}
+
+@keyframes scrollCompetences {
+    0%, 40%, 80% {
+        border-left: calc(38vw + 5px) solid #111;
+        border-right: calc(42vw + 5px) solid #111;
+    }
+    20%, 60% {
+        border-left: calc(42vw + 5px) solid #111;
+        border-right: calc(38vw + 5px) solid #111;
+    }
+    100% {
+        border-left: calc(40vw + 5px) solid #111;
+        border-right: calc(40vw + 5px) solid #111;
+    }    
+}
+@keyframes scrollPortraitChinois {
+    0%, 40%, 80% {
+        border-left: calc(58vw + 5px) solid #111;
+        border-right: calc(22vw + 5px) solid #111;
+    }
+    20%, 60% {
+        border-left: calc(62vw + 5px) solid #111;
+        border-right: calc(18vw + 5px) solid #111;
+    }
+    100% {
+        border-left: calc(60vw + 5px) solid #111;
+        border-right: calc(20vw + 5px) solid #111;
+    }    
+}
+@keyframes scrollGalerie {
+    from {
+        border-left: calc(20vw + 5px) solid #111;
+        border-right: calc(60vw + 5px) solid #111;
+    }  
+}
+
+
+
+/* =================== */
+/* ===== CONTACT ===== */
+/* =================== */
+
+.otherContact {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.otherContact section {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.otherContact a {
+    flex: 1;
+    text-decoration: none;
+    color: #0077ff;
+}
+
+.otherContact a:hover {
+    text-decoration: underline;
+}
+
+/* ======================= */
+/* ===== COMPETENCES ===== */
+/* ======================= */
+
+.accueilBody .contenu{
+    max-width: 44vw
+}
+.accueilBody main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.accueilBody p {
+    text-align: center;
+}
+
+/* ============================ */
+/* ===== PORTRAIT CHINOIS ===== */
+/* ============================ */
+
+.portraitChinoisBody .contenu {
+    flex: 1;
+}
+
+.chinesePortraitElement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #fa0;
+}
+
+.chinesePortraitElement:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.chinesePortraitElement div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: inherit;
+    padding: 5px 1rem;
+    background-color: #fff;
+}
+
+.chinesePortraitElement div::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0; left: calc(-2em + -10px);
+    height: 100%;
+    width: calc(2em + 10px);
+    background-color: #fa0;
+    transform: skewX(-16deg);
+    transform-origin: bottom;
+}
+
+.chinesePortraitElement:nth-child(even) div::after {
+    left: auto;
+    right: calc(-2em + -10px);
+    transform-origin: top;
+}
+
+.chinesePortraitElement span:nth-child(2n){
+    text-align: right;
+}
+
+.chinesePortraitElement svg {
+    position: relative;
+    width: 2em;
+    height: 2em;
+    padding: 8px;
+    fill: #fff;
+    background-color: #fa0;
+    z-index: 2;
+}
+
+/* ======================= */
+/* ===== COMPETENCES ===== */
+/* ======================= */
+
+.competencesBody h2, .competencesBody h3 {
+    text-align: center;
+}
+
+.competencesBody h2 {
+    text-decoration: underline;
+}
+
+.competencesBody h3 {
+    border-image: linear-gradient(to right, rgba(0,0,0,0), #ffaa00, rgba(0,0,0,0)) 1;
+}
+
+/* =================== */
+/* ===== GALERIE ===== */
+/* =================== */
+
+/* Modification mise en forme menus */
+
+.galerieBody .leftNav {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    transform: skewX(0deg);
+}
+
+.galerieBody .leftNav>* {
+    transform: skewX(16deg);
+}
+
+.galerieBody .leftNav a {
+    margin: 0 0 1rem 0;
+    transform-origin: bottom;
+}
+
+.galerieBody a span {
+    font-size: 0;
+    transition: all 1s;
+    transition: font-size 1s;
+}
+
+.galerieBody a:hover span {
+    font-size: 1.33333333333rem;
+}
+
+.galerieBody a svg {
+    width: 1em;
+    height: 1em;
+}
+
+/* Modification mise en forme gÃ©nÃ©rale */
+
+.galerieBody aside {
+    flex: initial;
+}
+
+.galerieBody .contenu {
+    flex: 1;
+    /* But des 2 lignes suivantes: faire en sorte que les images zommer se positionne par-dessus la deuxiÃ¨me div de class "sÃ©parateur" */
+    position: relative;
+    z-index: 1;
+}
+
+.galerieBody main {
+    display: flex;
+    flex-direction: column;
+    transform: initial;
+}
+
+.galerieBody section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.galerieBody section:last-child {
+    margin-bottom: 10px;
+}
+
+.galerieBody h2 {
+    transform: skewX(16deg);
+    transform-origin: top;
+}
+
+/* Gestion des galeries */
+
+.galerie {
+    /* DÃ©finition prÃ©cise de la taille de la galerie pour pouvoir ensuite adapter les images grÃ¢ce Ã  la propriÃ©tÃ© height: 100% */
+    height: calc((100vh - 120px - 4rem - 3em) / 2);
+    padding: 1rem;
+    background-color: #999999;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.galerie img {
+    height: 100%;
+    margin-right: 1rem;
+    border: 2px solid #ffaa00;
+    box-sizing: border-box;
+    transform: skewX(16deg);
+    transform-origin: top;
+}
+
+.galerie img:active {
+    position: fixed;
+    top: 1rem;
+    left: 50vh;
+    height: calc(100% - 10px - 2rem);
+    z-index: 1000;
+    transform: skewX(16deg) translateX(calc(-50% + 50vh * 0.287));
+}
+
+/* ************************* */
+/* ***** MEDIA QUERIES ***** */
+/* ************************* */
+
+@media screen and (max-width: 1280px) {
+    nav a {
+        min-height: calc(1.33333333333rem);
+    }
+    
+    nav a span{
+        font-size: 0;
+        transition: all 1s;
+        transition: font-size 1s;
+    }
+    
+    nav a:hover span {
+        font-size: 1.33333333333rem;
+    }
+    
+    nav a svg {
+        width: 1em;
+    }
+}
