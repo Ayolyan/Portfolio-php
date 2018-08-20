@@ -1,0 +1,87 @@
+/* DEFINITION POLICES DE CARACTERE */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* -------------------- */
+/* ------- BODY ------- */
+/* -------------------- */
+
+body {
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    padding: 0;
+}
+
+body>div {
+    flex: 1;
+}
+
+/* ------------------- */
+/* ------- NAV ------- */
+/* ------------------- */
+
+nav {
+    display: flex;
+    align-items: flex-start;
+}
+
+.leftNav {
+    justify-content: flex-end;
+}
+
+nav .selectPage {
+    font-size: 2rem;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    background-color: #ff9900;
+    font-size: 1.3333333333rem;
+    margin-right: 3rem;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+
+nav a::after, nav a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #ff9900;
+    transform: skew(16deg);
+    transform-origin: top;
+    z-index: -1;
+}
+
+nav a::after {
+    transform-origin: bottom;
+}
+
+nav svg {
+    height: 1em;
+    width: 0;
+    fill: #ffffff;
+    transition: width 1s;
+}
+
+nav a:hover svg {
+    display: initial;
+    margin: 0 5px 0 0;
+    width: 1em;
+}
+
+nav h1 {
+    display: inline;
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
