@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+    <route url="/admin/chinesePortrait" module="ChinesePortrait" action="index" />
+    <route url="/admin/chinesePortraitItem/insert" module="ChinesePortrait" action="insert" />
+    <route url="/admin/chinesePortraitItem/modify/([0-9]+)" module="ChinesePortrait" action="modify" vars="id" />
+    <route url="/admin/chinesePortraitItem/delete/([0-9]+)" module="ChinesePortrait" action="delete" vars="id" />
+</routes>

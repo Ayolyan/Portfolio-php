@@ -6,24 +6,12 @@
     <title>
         <?= $title ?>
     </title>
-<!--    <link href="/css/style.css" rel="stylesheet" />-->
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 
 <body>
-<div>
-<!--    <nav class="leftNav">-->
-<!--        --><?//= $leftNav ?>
-<!--    </nav>-->
-</div>
-
-<div>
-<!--    <nav class="rightNav">-->
-<!--        --><?//= $rightNav ?>
-<!--    </nav>-->
-    <main>
-        <?= $content ?>
-    </main>
-</div>
+    <?= $content ?>
 </body>
 
 </html>

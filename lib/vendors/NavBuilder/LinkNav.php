@@ -1,4 +1,5 @@
 <?php
+namespace NavBuilder;
 
 class LinkNav {
     
@@ -6,21 +7,21 @@ class LinkNav {
     private $_text;
     private $_svgLink;
     
-    const SVGLINKS  = array('presentation'    => 'Web/images/svgs/homeIcon.svg',
-                            'skills'          => 'Web/images/svgs/skillsIcon.svg',
-                            'chinesePortrait' => 'Web/images/svgs/chinesePortraitIcon.svg',
-                            'gallery'         => 'Web/images/svgs/galleryIcon.svg',
-                            'contact'         => 'Web/images/svgs/contactIcon.svg'
+    const SVGLINKS  = array('index'    => __DIR__.'/../../../Web/images/svgs/homeIcon.svg',
+                            'skills'          => __DIR__.'/../../../Web/images/svgs/skillsIcon.svg',
+                            'chinesePortrait' => __DIR__.'/../../../Web/images/svgs/chinesePortraitIcon.svg',
+                            'gallery'         => __DIR__.'/../../../Web/images/svgs/galleryIcon.svg',
+                            'contact'         => __DIR__.'/../../../Web/images/svgs/contactIcon.svg'
                             );
-    const TEXTLINKS = array('presentation'    => 'Présentation',
+    const TEXTLINKS = array('index'           => 'Accueil',
                             'skills'          => 'Compétences',
                             'chinesePortrait' => 'Portrait Chinois',
-                            'gallery'         => 'Gallery',
+                            'gallery'         => 'Gallerie',
                             'contact'         => 'Contact'
                             );
     
     public function __construct($pageName) {
-        $this->_link = 'ChinesePortraitController.php?action=' . $pageName;
+        $this->_link = $pageName;
         $this->_text = self::TEXTLINKS[$pageName];
         $this->_svgLink = self::SVGLINKS[$pageName];
     }
@@ -29,7 +30,7 @@ class LinkNav {
         ob_start();
 ?>
             <a href="<?= $this->_link ?>">
-                <?php echo file_get_contents($this->_svgLink) ?>
+                <?= file_get_contents($this->_svgLink) ?>
                 <span><?= $this->_text ?></span>
             </a>
 <?php 

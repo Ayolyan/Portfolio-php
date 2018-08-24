@@ -5,35 +5,33 @@ use \Entity\CPItem;
 
 class CPItemManagerPDO extends CPItemManager {
     
-    public function add(CPItem $cpitem) {
+    public function add(CPItem $cpItem) {
+        $request = $this->dao->prepare('INSERT INTO chinese_portrait_items(CPItemSvgLink, leftText, rightText) VALUES(:CPItemSvgLink, :leftText, :rightText)');
         
-        $db = $this->dbConnect();
-        $request = $db->prepare('INSERT INTO chinese_portrait_items(svgLinkCPItem, leftText, rightText) VALUES(:svgLinkCPItem, :leftText, :rightText)');
-        
-        $request->bindValue(':svgLinkCPItem', $cpitem->getSvgLinkCPItem());
-        $request->bindValue(':leftText',      $cpitem->getLeftText());
-        $request->bindValue(':rightText',     $cpitem->getRightText());
-        
-        $request->execute;
-        
-    }
-    
-    public function update(CPItem $cpitem) {
-        
-        $db = $this->dbConnect();
-        $request = $db->prepare('UPDATE chinese_portrait_items SET svgLinkCPItem = :svgLinkCPItem, leftText = :leftText, rightText = :rightText WHERE idCPItem = :idCPItem');
-        
-        $request->bindValue(':svgLinkCPItem', $cpitem->getSvgLinkCPItem());
-        $request->bindValue(':leftText',      $cpitem->getLeftText());
-        $request->bindValue(':rightText',     $cpitem->getRightText());
-        $request->bindValue(':idCPItem',      $cpitem->getIdCPItem());
+        $request->bindValue(':CPItemSvgLink', $cpItem->getSvgLink());
+        $request->bindValue(':leftText',      $cpItem->getLeftText());
+        $request->bindValue(':rightText',     $cpItem->getRightText());
         
         $request->execute();
+    }
+
+    public function count() {
+        return $this->dao->query('SELECT COUNT(*) FROM chinese_portrait_items')->fetchColumn();
+    }
+
+    public function modify(CPItem $cpItem) {
+        $request = $this->dao->prepare('UPDATE chinese_portrait_items SET CPItemSvgLink = :svgLinkCPItem, leftText = :leftText, rightText = :rightText WHERE idCPItem = :idCPItem');
         
+        $request->bindValue(':svgLinkCPItem', $cpItem->getSvgLink());
+        $request->bindValue(':leftText',      $cpItem->getLeftText());
+        $request->bindValue(':rightText',     $cpItem->getRightText());
+        $request->bindValue(':idCPItem',      $cpItem->getId(), \PDO::PARAM_INT);
+        
+        $request->execute();
     }
     
     public function get($id) {
-        $request = $this->dao->prepare('SELECT idCPItem AS "id", svgLinkCPItem AS "svgLink", leftText, rightText FROM chinese_portrait_items WHERE idCPItem= :id');
+        $request = $this->dao->prepare('SELECT idCPItem AS "id", CPItemSvgLink AS "svgLink", leftText, rightText FROM chinese_portrait_items WHERE idCPItem= :id');
         $request->bindValue(':id', (int) $id, \PDO::PARAM_INT);
         $request->execute();
 
@@ -42,7 +40,6 @@ class CPItemManagerPDO extends CPItemManager {
         $CPItem = $request->fetch();
 
         return $CPItem;
-        
     }
     
     public function getList($start = -1, $limit = -1) {
@@ -62,10 +59,8 @@ class CPItemManagerPDO extends CPItemManager {
         return $CPItems;
     }
     
-    public function delete(CPItem $cpitem) {
-
-        $request = $this->dao->query('DELETE FROM chinese_portrait_items WHERE idCPItem = ' . $cpitem->getId());
-        
+    public function delete($id) {
+        $this->dao->exec('DELETE FROM chinese_portrait_items WHERE idCPItem = ' . (int) $id);
     }
     
 }

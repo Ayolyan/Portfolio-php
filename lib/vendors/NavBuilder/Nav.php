@@ -1,4 +1,5 @@
 <?php
+namespace NavBuilder;
 
 class Nav {
     
@@ -6,7 +7,7 @@ class Nav {
     private $_rightNav;
     
     const LINKS = array('contact',
-                        'presentation',
+                        'index',
                         'skills',
                         'chinesePortrait',
                         'gallery');
@@ -38,10 +39,10 @@ class Nav {
                     echo($i == array_search($page, self::LINKS) ? $link->toTitle() : $link);
                 }
             } else {
-                throw new Exception('The value of $side parameters must be "left" or "right"');
+                throw new \InvalidArgumentException('The value of $side parameters must be "left" or "right"');
             }
         } else {
-            throw new Exception('The value of $page parameters isn\'t good');
+            throw new \InvalidArgumentException('The value of $page parameters isn\'t good');
         }
         $nav = ob_get_clean();
         return $nav;

@@ -10,7 +10,7 @@ class CPItem extends Entity {
     protected $rightText;
 
     public function isValid() {
-        return !(empty($this->svgLink) || empty($this->leftText) || empty($this->rightText));
+        return !(empty($this->leftText) || empty($this->rightText));
     }
     
     // ******* //

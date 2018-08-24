@@ -77,7 +77,7 @@ nav .selectPage {
 nav a {
     display: flex;
     align-items: center;
-    color: #ffffff;
+    color: #ff9900;
     font-family: Montserrat, sans-serif;
     font-size: 1rem;
     font-weight: bold;
@@ -99,12 +99,15 @@ nav a::after, nav a::before {
     top: 0; left: 0;
     height: 100%;
     width: 100%;
-    background-color: #ff9900;
-    /*border: #ffffff double 6px;*/
+    border: #ff9900 solid 2px;
     box-sizing: border-box;
     transform: skew(-16deg);
     transform-origin: top;
-    z-index: -1;
+}
+
+nav a:hover::after, nav a:hover::before {
+    border: #ff9900 double 6px;
+    transition: border 0.15s;
 }
 
 nav a::before, nav a:hover::before {
@@ -119,7 +122,7 @@ nav a::after, nav a:hover::after {
 nav svg {
     height: 1em;
     width: 0;
-    fill: #ffffff;
+    fill: #ff9900;
     transition: width 1s;
 }
 

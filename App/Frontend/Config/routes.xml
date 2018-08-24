@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
-    <route url="/" module="ChinesePortrait" action="index" />
+    <route url="/" module="Core" action="index" />
+    <route url="/accueil" module="Core" action="index" />
+    <route url="/home" module="Core" action="index" />
+    <route url="/index" module="Core" action="index" />
+
+    <route url="/profil" module="Core" action="profile" />
+    <route url="/profile" module="Core" action="profile" />
+
+    <route url="/contact" module="Core" action="contact" />
+
     <route url="/chinesePortrait" module="ChinesePortrait" action="index" />
 </routes>
