@@ -7,16 +7,18 @@ class LinkNav {
     private $_text;
     private $_svgLink;
     
-    const SVGLINKS  = array('index'    => __DIR__.'/../../../Web/images/svgs/homeIcon.svg',
+    const SVGLINKS  = array('index'           => __DIR__.'/../../../Web/images/svgs/homeIcon.svg',
+                            'profile'         => __DIR__.'/../../../Web/images/svgs/skillsIcon.svg',
                             'skills'          => __DIR__.'/../../../Web/images/svgs/skillsIcon.svg',
                             'chinesePortrait' => __DIR__.'/../../../Web/images/svgs/chinesePortraitIcon.svg',
                             'gallery'         => __DIR__.'/../../../Web/images/svgs/galleryIcon.svg',
                             'contact'         => __DIR__.'/../../../Web/images/svgs/contactIcon.svg'
                             );
     const TEXTLINKS = array('index'           => 'Accueil',
+                            'profile'         => 'Mon Profil',
                             'skills'          => 'Compétences',
                             'chinesePortrait' => 'Portrait Chinois',
-                            'gallery'         => 'Gallerie',
+                            'gallery'         => 'Ma Gallerie',
                             'contact'         => 'Contact'
                             );
     

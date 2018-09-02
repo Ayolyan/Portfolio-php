@@ -14,7 +14,7 @@ use Entity\CPItem;
 abstract class CPItemManager extends Manager {
 
     /**
-     * Method which add a chines portrait item in database.
+     * Method which add a chinese portrait item in database.
      * @param CPItem $CPItem The item to add.
      * @return void
      */

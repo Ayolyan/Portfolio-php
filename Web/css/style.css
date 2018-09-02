@@ -6,13 +6,18 @@
 /* -------------------- */
 
 body {
-    background-color: #f1f1f1;
+    background: url("/images/pattern.png");
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     min-height: 100vh;
     padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
 }
 
 /* ------------------------------- */
@@ -25,35 +30,119 @@ body {
     width: 100%;
 }
 
-.contentSection:nth-child(odd)>div:first-child, .contentSection:nth-child(even)>div:last-child {
-    animation: fadeInContentSection 1s both;
+.contentSection:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.contentSection>div:first-child {
+    animation: fadeFromLeft 1s both;
     background-image: url('/images/pagodeChinoise.jpg');
     background-size: cover;
     flex: 45;
-    margin: 0 3.5vw 0 0;
     padding: 0 2.5rem 0 0;
     position: relative;
 }
 
-.contentSection:nth-child(odd)>div:first-child::after, .contentSection:nth-child(even)>div:last-child::after {
+.contentSection:nth-child(odd)>div:first-child {
+    margin: 0 3.5vw 0 0;
+}
+
+.contentSection>div:first-child::after  {
     content: "";
     display: block;
     position: absolute;
     top: 0; left: 100%;
     height: 100%;
     width: 100%;
-    background-color: #f1f1f1;
+    background: url("/images/pattern.png");
     border-left: solid 3.5vw;
-    border-image: linear-gradient(to right, black 40.5%, #ff9900 40.5%, #ff9900 95.2%, grey 95.2%, grey) 1 100%;;
+    border-image: linear-gradient(to right, black 40%, #ff9900 41%, #ff9900 95%, grey 96%, grey) 1 100%;
     box-sizing: border-box;
     transform: skew(-16deg);
     transform-origin: top;
 }
 
-.contentSection:nth-child(odd)>div:last-child, .contentSection:nth-child(even)>div:first-child {
+.contentSection:nth-child(even)>div:first-child::after {
+    border-image: linear-gradient(to left, black 40%, #ff9900 41%, #ff9900 95%, grey 96%, grey) 1 100%;
+    border-left: none;
+    border-right: solid 3.5vw;
+    left: -100%;
+    transform-origin: bottom;
+}
+
+.contentSection>div:last-child::after {
+    border-left: none;
+    border-right: solid 3.5vw;
+    left: -100%;
+    transform-origin: bottom;
+}
+
+.contentSection>div:last-child {
     flex: 55;
     padding: 0 0 0 1.5rem;
     z-index: 100;
+}
+
+.contentSection h2 {
+    color: #ff9900;
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 1.5rem 0;
+    padding: 10px;
+    position: relative;
+}
+
+/* h2 */
+.contentSection h2::before,
+.contentSection h2::after {
+    box-sizing: border-box;
+    border: #ff9900 solid 2px;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    transform: skew(-16deg);
+    transform-origin: top;
+    z-index: -1;
+}
+.contentSection h2::after {
+    transform-origin: bottom;
+    border-left: none;
+}
+.contentSection h2::before {
+    border-right: none;
+}
+.contentSection:nth-child(even) h2::before {
+    transform: none;
+}
+
+/* h3 */
+.contentSection h3 {
+    background: #ff9900;
+    display: inline-block;
+    font-size: 1.1em;
+    margin:0;
+    padding: 0.22em 0;
+    position: relative;
+}
+.contentSection h3::before,
+.contentSection h3::after {
+    content: '';
+    height: 1.1em;
+    width: 1.1em;
+    position: absolute;
+    top: 0.25em;
+    background: #ff9900;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+.contentSection h3::after {
+    right: -0.6em;
+}
+.contentSection h3::before {
+    left: -0.6em;
 }
 
 /* ------------------- */
@@ -100,8 +189,6 @@ nav a::after, nav a::before {
     height: 100%;
     width: 100%;
     background-color: #ff9900;
-    /*border: #ffffff double 6px;*/
-    box-sizing: border-box;
     transform: skew(-16deg);
     transform-origin: top;
     z-index: -1;
@@ -141,7 +228,7 @@ nav h1 {
     font-weight: inherit;
 }
 
-@keyframes fadeInContentSection {
+@keyframes fadeFromLeft {
     from {
         opacity: 0;
         transform: translateX(-100%);
@@ -152,13 +239,20 @@ nav h1 {
     }
 }
 
+@keyframes fadeFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* ============================ */
 /* ===== PORTRAIT CHINOIS ===== */
 /* ============================ */
-
-.portraitChinoisBody .contenu {
-    flex: 1;
-}
 
 .chinesePortraitElement {
     display: flex;

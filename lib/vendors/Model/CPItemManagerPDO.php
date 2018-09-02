@@ -5,7 +5,7 @@ use \Entity\CPItem;
 
 class CPItemManagerPDO extends CPItemManager {
     
-    public function add(CPItem $cpItem) {
+    protected function add(CPItem $cpItem) {
         $request = $this->dao->prepare('INSERT INTO chinese_portrait_items(CPItemSvgLink, leftText, rightText) VALUES(:CPItemSvgLink, :leftText, :rightText)');
         
         $request->bindValue(':CPItemSvgLink', $cpItem->getSvgLink());
@@ -19,7 +19,7 @@ class CPItemManagerPDO extends CPItemManager {
         return $this->dao->query('SELECT COUNT(*) FROM chinese_portrait_items')->fetchColumn();
     }
 
-    public function modify(CPItem $cpItem) {
+    protected function modify(CPItem $cpItem) {
         $request = $this->dao->prepare('UPDATE chinese_portrait_items SET CPItemSvgLink = :svgLinkCPItem, leftText = :leftText, rightText = :rightText WHERE idCPItem = :idCPItem');
         
         $request->bindValue(':svgLinkCPItem', $cpItem->getSvgLink());
@@ -31,7 +31,7 @@ class CPItemManagerPDO extends CPItemManager {
     }
     
     public function get($id) {
-        $request = $this->dao->prepare('SELECT idCPItem AS "id", CPItemSvgLink AS "svgLink", leftText, rightText FROM chinese_portrait_items WHERE idCPItem= :id');
+        $request = $this->dao->prepare('SELECT idCPItem AS "id", CPItemSvgLink AS "svgLink", leftText, rightText FROM chinese_portrait_items WHERE idCPItem=:id');
         $request->bindValue(':id', (int) $id, \PDO::PARAM_INT);
         $request->execute();
 
@@ -43,13 +43,13 @@ class CPItemManagerPDO extends CPItemManager {
     }
     
     public function getList($start = -1, $limit = -1) {
-        $sql = 'SELECT idCPItem AS "id", CPItemSvgLink AS "svgLink", leftText, rightText FROM chinese_portrait_items ORDER BY idCPItem';
+        $request = 'SELECT idCPItem AS "id", CPItemSvgLink AS "svgLink", leftText, rightText FROM chinese_portrait_items ORDER BY idCPItem';
 
         if ($start != -1 || $limit != -1) {
-            $sql .= ' LIMIT ' . (int) $limit . ' OFFSET ' . (int) $start;
+            $request .= ' LIMIT ' . (int) $limit . ' OFFSET ' . (int) $start;
         }
 
-        $request = $this->dao->query($sql);
+        $request = $this->dao->query($request);
         $request->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\CPItem');
 
         $CPItems = $request->fetchAll();

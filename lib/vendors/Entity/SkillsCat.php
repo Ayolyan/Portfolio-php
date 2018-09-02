@@ -13,7 +13,15 @@ class SkillsCat extends Entity{
     public function isValid() {
         return !(empty($this->name));
     }
-    
+
+    // ********* //
+    // FUNCTIONS //
+    // ********* //
+
+    public function __toString() {
+        return 'Skills categorie : ' . $this->name;
+    }
+
     // ******* //
     // GETTERS //
     // ******* //
@@ -33,14 +41,6 @@ class SkillsCat extends Entity{
             $this->errors[] = self::NAME_INVALID;
         }
         
-    }
-    
-    // ********* //
-    // FUNCTIONS //
-    // ********* //
-    
-    public function __toString() {
-        return 'Skills categorie : ' . $this->name;
     }
     
 }

@@ -8,6 +8,9 @@
     <route url="/profil" module="Core" action="profile" />
     <route url="/profile" module="Core" action="profile" />
 
+    <route url="/gallery" module="Gallery" action="index" />
+    <route url="/gallery/item-" module="Gallery" action="item" />
+
     <route url="/contact" module="Core" action="contact" />
 
     <route url="/chinesePortrait" module="ChinesePortrait" action="index" />

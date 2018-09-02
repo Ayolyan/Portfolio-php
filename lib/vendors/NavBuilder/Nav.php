@@ -8,8 +8,7 @@ class Nav {
     
     const LINKS = array('contact',
                         'index',
-                        'skills',
-                        'chinesePortrait',
+                        'profile',
                         'gallery');
     
     public function __construct($page) {

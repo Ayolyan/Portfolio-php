@@ -9,7 +9,7 @@ class Skill extends Entity {
     protected $name;
     protected $svgLink;
     protected $progress;
-    protected $cat;
+    protected $catId;
 
     const NAME_INVALID = 1;
     const SVGLINK_INVALID = 2;
@@ -27,7 +27,7 @@ class Skill extends Entity {
     public function getName() { return $this->name; }
     public function getSvgLink() { return $this->svgLink; }
     public function getProgress() { return $this->progress; }
-    public function getCat() { return $this->cat; }
+    public function getCatId() { return $this->catId; }
     
     // ******* //
     // SETTERS //
@@ -57,8 +57,8 @@ class Skill extends Entity {
         $this->progress = $progress;
     }
     
-    public function setCat(SkillsCat $cat) {
-        $this->cat = $cat;
+    public function setCatId($catId) {
+        $this->catId = $catId;
     }
     
     // ********* //
