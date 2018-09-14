@@ -12,6 +12,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     min-height: 100vh;
+    overflow-x: hidden;
     padding: 0;
 }
 
@@ -81,6 +82,13 @@ h1, h2, h3 {
     flex: 55;
     padding: 0 0 0 1.5rem;
     z-index: 100;
+    transform: skewX(-16deg);
+    transform-origin: top;
+}
+
+.contentSection>div:last-child>*:not(main) {
+    transform: skewX(16deg);
+    transform-origin: top;
 }
 
 .contentSection h2 {
@@ -261,7 +269,7 @@ nav h1 {
     background-color: #fa0;
 }
 
-.chinesePortraitElement:nth-child(even) {
+.chinesePortraitElement:nth-child(odd) {
     flex-direction: row-reverse;
 }
 
@@ -275,19 +283,33 @@ nav h1 {
     background-color: #fff;
 }
 
-.chinesePortraitElement div::after {
+/*.chinesePortraitElement div::after,*/
+.chinesePortraitElement div::before {
     display: block;
     content: "";
     position: absolute;
-    top: 0; left: calc(-2em + -10px);
+    top: 0; left: 0;
     height: 100%;
-    width: calc(2em + 10px);
-    background-color: #fa0;
+    width: 100%;
+    background-color: #ffffff;
     transform: skewX(-16deg);
+    transform-origin: top;
+    z-index: -10;
+}
+
+.chinesePortraitElement:nth-child(even) div::before {
     transform-origin: bottom;
 }
 
-.chinesePortraitElement:nth-child(even) div::after {
+/*.chinesePortraitElement div::after {*/
+    /*background-color: #fa0;*/
+    /*left: calc(-2em + -10px);*/
+    /*transform-origin: bottom;*/
+    /*width: calc(2em + 10px);*/
+    /*z-index: 1;*/
+/*}*/
+
+.chinesePortraitElement:nth-child(odd) div::after {
     left: auto;
     right: calc(-2em + -10px);
     transform-origin: top;

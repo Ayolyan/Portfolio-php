@@ -1,10 +1,10 @@
 <div class="contentSection">
-    <div>
+    <div class"contentSectionLeft">
         <nav class="leftNav">
             <?= $leftNav ?>
         </nav>
     </div>
-    <div>
+    <div class"contentSectionRight">
         <nav class="rightNav">
             <?= $rightNav ?>
         </nav>

@@ -50,8 +50,9 @@
     ?>
         <div class="chinesePortraitElement">
             <?php
-                if (file_exists($CPItem["svgLink"])) {
-                    file_get_contents($CPItem["svgLink"]);
+                if (file_exists(__DIR__ . '/../../../../../Web' . $CPItem["svgLink"])) {
+
+                    include(__DIR__ . '/../../../../../Web' . $CPItem["svgLink"]);
                 }
             ?>
             <div>
