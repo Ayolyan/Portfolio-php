@@ -10,6 +10,7 @@ namespace App\Frontend\Modules\Gallery;
 
 use \AyolyanFram\BackController;
 use \AyolyanFram\HTTPRequest;
+use Entity\GalleryItem;
 use \NavBuilder\Nav;
 
 class GalleryController extends BackController {
@@ -22,8 +23,18 @@ class GalleryController extends BackController {
         $this->page->addVar('rightNav', $nav->getRightNav());
     }
 
-    public function executeItem() {
-        // TODO: write the method
+    public function executeItem(HTTPRequest  $request) {
+        $itemId = $request->getData('id');
+
+        $manager = $this->managers->getManagerOf('GalleryItem');
+        $item = $manager->get($itemId);
+
+
+        $this->page->addVar('title', 'Gallerie');
+
+        $nav = new Nav('gallery');
+        $this->page->addVar('leftNav', $nav->getLeftNav());
+        $this->page->addVar('rightNav', $nav->getRightNav());
     }
 
 }

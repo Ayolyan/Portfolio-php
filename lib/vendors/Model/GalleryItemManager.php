@@ -1,65 +1,62 @@
 <?php
 require_once('model/Manager.php');
 
-class GalleryItemManager extends Manager {
+use \Entity\GalleryItem;
 
-    public function add(GalleryItem $galleryItem) {
+abstract class GalleryItemManager extends Manager {
 
-        $db = $this->dbConnect();
-        $request = $db->prepare('INSERT INTO gallery_items(galItemImgLink, creationDate, description) VALUES(:galItemImgLink, :creationDate, :description)');
+    /**
+     * Method which add a gallery item in database.
+     * @param GalleryItem $galleryItem
+     * @return void
+     */
+    abstract protected function add(GalleryItem $galleryItem);
 
-        $request->bindValue(':galItemImgLink',  $galleryItem->getImgLink());
-        $request->bindValue(':galCreationDate', $galleryItem->getCreationDate());
-        $request->bindValue(':galDescription',  $galleryItem->getDescription());
+    /**
+     * Method which return the total number of gallery item.
+     * @return int
+     */
+    abstract public function count();
 
-        $request->execute();
+    /**
+     * Method which delete a gallery item in database
+     * @param $id
+     * @return void
+     */
+    abstract public function delete($id);
 
-    }
+    /**
+     * Method which return the gallery item which correspond to the id
+     * @param int $id The id of the gallery item in database
+     * @return GalleryItem
+     */
+    abstract public function get($id);
 
-    public function update(GalleryItem $galleryItem) {
+    /**
+     * Method which return a list of gallery items.
+     * @param int $start First item to select
+     * @param int $limit Items number to select
+     * @return array The list of gallery items. Each entry is an instance of GalleryItem.
+     */
+    abstract public function getList($start = -1, $limit = -1);
 
-        $db = $this->dbConnect();
-        $request = $db->prepare('UPDATE gallery_items SET galItemImgLink = :galItemImgLink, creationDate = :creationDate, description = :description WHERE idGalleryItem = :idGalleryItem');
+    /**
+     * @param GalleryItem $galleryItem
+     * @return mixed
+     */
+    abstract protected function modify(GalleryItem $galleryItem);
 
-        $request->bindValue(':idGalleryItem',   $galleryItem->getId());
-        $request->bindValue(':galItemImgLink',  $galleryItem->getImgLink());
-        $request->bindValue(':galCreationDate', $galleryItem->getCreationDate());
-        $request->bindValue(':galDescription',  $galleryItem->getDescription());
-
-        $request->execute();
-
-    }
-
-    public function get($id) {
-
-        $db = $this->dbConnect();
-        $request = $db->query('SELECT idGalleryItems AS "id", galItemImgLink AS "imgLink", creationDate, description FROM gallery_items WHERE idGalleryItems=' . $id);
-        $data = $request->fetch(PDO::FETCH_ASSOC);
-
-        return new GalleryItem($data);
-
-    }
-
-    public function getList() {
-
-        $GalleryItems = [];
-
-        $db = $this->dbConnect();
-        $request = $db->query('SELECT idGalleryItems AS "id", galItemImgLink AS "imgLink", creationDate, description FROM gallery_items ORDER BY idGalleryItems');
-
-        while ($data = $request->fetch(PDO::FETCH_ASSOC)) {
-            $GalleryItems[] = new GalleryItem($data);
+    /**
+     * Method which register a skill.
+     * @param GalleryItem $galleryItem The gallery item to register.
+     * @return void
+     */
+    public function save(GalleryItem $galleryItem) {
+        if ($galleryItem->isValid()) {
+            $galleryItem->isNew() ? $this->add($galleryItem) : $this->modify($galleryItem);
+        } else {
+            throw new \RuntimeException('L\'item doit être validé pour être enregistrée');
         }
-
-        return $GalleryItems;
-
-    }
-
-    public function delete(GalleryItem $galleryItem) {
-
-        $db = $this->dbConnect();
-        $request = $db->query('DELETE FROM gallery_items WHERE idGalleryItems = ' . $galleryItem->getId());
-
     }
 
 }

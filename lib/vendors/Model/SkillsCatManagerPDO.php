@@ -21,7 +21,7 @@ class SkillsCatManagerPDO extends SkillsCatManager {
     }
 
     public function count() {
-        return $this->dao->query('SELECT COUNT(*) FROM skillsCatName')->fetchColumn();
+        return $this->dao->query('SELECT COUNT(*) FROM skills_cat')->fetchColumn();
     }
 
     public function delete($id) {

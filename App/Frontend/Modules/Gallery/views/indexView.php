@@ -1,7 +1,11 @@
-<?php $title = 'Accueil' ?>
+<div>
+    <nav class="leftNav">
+        <?= $leftNav ?>
+    </nav>
+</div>
 
-<?php ob_start(); ?>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('view/basicTemplate.php'); ?>
+<div>
+    <nav class="rightNav">
+        <?= $rightNav ?>
+    </nav>
+</div>

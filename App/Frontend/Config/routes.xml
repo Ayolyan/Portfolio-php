@@ -9,7 +9,7 @@
     <route url="/profile" module="Core" action="profile" />
 
     <route url="/gallery" module="Gallery" action="index" />
-    <route url="/gallery/item-" module="Gallery" action="item" />
+    <route url="/gallery/item-([0-9]+)" module="Gallery" action="item" vars="id"/>
 
     <route url="/contact" module="Core" action="contact" />
 
