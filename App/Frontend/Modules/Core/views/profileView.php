@@ -1,21 +1,27 @@
 <div class="contentSection">
-    <div>
+    <div class="contentSectionLeft">
         <nav class="leftNav">
             <?= $leftNav ?>
         </nav>
+        <img src="images/accueil.jpg" />
     </div>
-    <div>
+    <div class="contentSectionRight">
         <nav class="rightNav">
             <?= $rightNav ?>
         </nav>
+        <p>
+            Enchanté ! Je m'appelle Yoan Bidet, j'ai 20 ans et je suis en deuxième année d'un DUT Métiers du Multimédia et de l'Internet (MMI) à l'IUT de Laval.
+        </p>
+        <a href="#competences"><button>Compétences</button></a>
+        <a href="#chinesePortrait"><button>Portrait Chinois</button></a>
     </div>
 </div>
 
-<div class="contentSection">
+<div class="contentSection" id="competences">
     <div>
-
+        <img src="images/competences.jpg" />
     </div>
-    <div>
+    <div class="">
         <h2>Mes Compétences</h2>
         <?php
         foreach ($listSkills as $name => $skills) {
@@ -39,9 +45,9 @@
     </div>
 </div>
 
-<div class="contentSection">
+<div class="contentSection" id="chinesePortrait">
     <div>
-
+        <img src="images/pagodeChinoise.jpg" />
     </div>
     <div>
         <h2>Mon Portrait Chinois</h2>
@@ -50,9 +56,9 @@
     ?>
         <div class="chinesePortraitElement">
             <?php
-                if (file_exists(__DIR__ . '/../../../../../Web' . $CPItem["svgLink"])) {
+                if (file_exists(__DIR__ . '/../../../../../Web/' . $CPItem["svgLink"])) {
 
-                    include(__DIR__ . '/../../../../../Web' . $CPItem["svgLink"]);
+                    include(__DIR__ . '/../../../../../Web/' . $CPItem["svgLink"]);
                 }
             ?>
             <div>

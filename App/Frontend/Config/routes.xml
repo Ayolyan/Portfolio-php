@@ -10,6 +10,7 @@
 
     <route url="/gallery" module="Gallery" action="index" />
     <route url="/gallery/item-([0-9]+)" module="Gallery" action="item" vars="id"/>
+    <route url="/gallery/category-([0-9]+)" module="Gallery" action="category" vars="id"/>
 
     <route url="/contact" module="Core" action="contact" />
 

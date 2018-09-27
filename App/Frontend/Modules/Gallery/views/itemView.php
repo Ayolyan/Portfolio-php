@@ -1,11 +1,13 @@
-<div>
-    <nav class="leftNav">
-        <?= $leftNav ?>
-    </nav>
-</div>
+<div class="contentSection">
+    <div class="contentSectionLeft">
+        <nav class="leftNav">
+            <?= $leftNav ?>
+        </nav>
+    </div>
 
-<div>
-    <nav class="rightNav">
-        <?= $rightNav ?>
-    </nav>
+    <div class="contentSectionRight">
+        <nav class="rightNav">
+            <?= $rightNav ?>
+        </nav>
+    </div>
 </div>

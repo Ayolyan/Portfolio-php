@@ -16,7 +16,7 @@ body {
     padding: 0;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
 }
@@ -35,72 +35,89 @@ h1, h2, h3 {
     flex-direction: row-reverse;
 }
 
-.contentSection>div:first-child {
+/* Content Section Left*/
+.contentSectionLeft {
     animation: fadeFromLeft 1s both;
-    background-image: url('/images/pagodeChinoise.jpg');
     background-size: cover;
+    border-right: solid 1.4vw #000000;
     flex: 45;
+    overflow: hidden;
     padding: 0 2.5rem 0 0;
     position: relative;
-}
-
-.contentSection:nth-child(odd)>div:first-child {
-    margin: 0 3.5vw 0 0;
-}
-
-.contentSection>div:first-child::after  {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0; left: 100%;
-    height: 100%;
-    width: 100%;
-    background: url("/images/pattern.png");
-    border-left: solid 3.5vw;
-    border-image: linear-gradient(to right, black 40%, #ff9900 41%, #ff9900 95%, grey 96%, grey) 1 100%;
-    box-sizing: border-box;
-    transform: skew(-16deg);
     transform-origin: top;
 }
 
-.contentSection:nth-child(even)>div:first-child::after {
-    border-image: linear-gradient(to left, black 40%, #ff9900 41%, #ff9900 95%, grey 96%, grey) 1 100%;
-    border-left: none;
-    border-right: solid 3.5vw;
-    left: -100%;
-    transform-origin: bottom;
-}
-
-.contentSection>div:last-child::after {
-    border-left: none;
-    border-right: solid 3.5vw;
-    left: -100%;
-    transform-origin: bottom;
-}
-
-.contentSection>div:last-child {
-    flex: 55;
-    padding: 0 0 0 1.5rem;
-    z-index: 100;
-    transform: skewX(-16deg);
-    transform-origin: top;
-}
-
-.contentSection>div:last-child>*:not(main) {
+.contentSectionLeft>* {
     transform: skewX(16deg);
     transform-origin: top;
 }
 
+.contentSectionLeft img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+}
+
+.contentSection:nth-child(even)>.contentSectionLeft {
+    animation: fadeFromRight 1s both;
+    border-left:  solid 1.4vw #000000;
+    border-right: none;
+    transform-origin: bottom;
+}
+
+.contentSection:nth-child(even)>.contentSectionLeft img {
+    left: initial;
+    right: 0;
+}
+
+/* Content Section Right*/
+.contentSection:nth-child(even)>.contentSectionRight {
+    animation: fadeFromLeft 1s both;
+    border-left: none;
+    border-right: solid 2.1vw;
+    border-image: linear-gradient(to right, #ff9900 90%, #ffffff 92%) 1 100%;
+    text-align: right;
+    transform-origin: bottom;
+}
+
+.contentSectionRight {
+    animation: fadeFromRight 1s both;
+    border-left: solid 2.1vw;
+    border-image: linear-gradient(to right, #ffffff 8%, #ff9900 10%) 1 100%;
+    flex: 55;
+    padding: 0 1.5rem;
+    z-index: 100;
+    transform-origin: top;
+}
+
+.contentSectionRight::after {
+    border-left: none;
+    border-right: solid 3.5vw;
+    left: -100%;
+    transform-origin: bottom;
+}
+
+.contentSectionRight>* {
+    transform: skewX(16deg);
+    transform-origin: top;
+}
+
+/* h2 */
 .contentSection h2 {
     color: #ff9900;
     display: inline-block;
     font-size: 1.3rem;
-    margin: 0 0 1.5rem 0;
+    margin: 1.5rem 0 1.5rem 0;
     padding: 10px;
     position: relative;
 }
 
-/* h2 */
+.contentSection:first-child h2 {
+    margin: 0 0 1.5rem 0;
+}
+
 .contentSection h2::before,
 .contentSection h2::after {
     box-sizing: border-box;
@@ -111,7 +128,7 @@ h1, h2, h3 {
     top: 0; left: 0;
     height: 100%;
     width: 100%;
-    transform: skew(-16deg);
+    transform: skewX(-16deg);
     transform-origin: top;
     z-index: -1;
 }
@@ -122,35 +139,45 @@ h1, h2, h3 {
 .contentSection h2::before {
     border-right: none;
 }
-.contentSection:nth-child(even) h2::before {
-    transform: none;
-}
 
 /* h3 */
 .contentSection h3 {
-    background: #ff9900;
     display: inline-block;
-    font-size: 1.1em;
-    margin:0;
-    padding: 0.22em 0;
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 8px;
     position: relative;
+    border-top: 2px solid #ff9900;
+    border-bottom: 2px solid #ff9900;
+    color: #ff9900;
 }
 .contentSection h3::before,
 .contentSection h3::after {
     content: '';
-    height: 1.1em;
-    width: 1.1em;
+    border-bottom: 2px solid #ff9900;
+    border-left: 2px solid #ff9900;
+    display: inline-block;
     position: absolute;
-    top: 0.25em;
-    background: #ff9900;
-    transform: rotate(45deg);
-    z-index: -1;
-}
-.contentSection h3::after {
-    right: -0.6em;
+    height: 22px;
+    top: 0;
+    width: 22px;
 }
 .contentSection h3::before {
-    left: -0.6em;
+    transform: rotate(36deg)
+    skewY(20deg);
+    left: 0;
+}
+.contentSection h3::after {
+    transform: rotate(216deg)
+    skewY(20deg);
+    right: 0;
+}
+
+
+.contentSection h4 {
+    color: #ff9900;
+    margin: 0.5em 0;
+    text-align: center;
 }
 
 /* ------------------- */
@@ -243,7 +270,7 @@ nav h1 {
     }
     to {
         opacity: 1;
-        transform: none;
+        transform: skewX(-16deg);
     }
 }
 
@@ -254,7 +281,7 @@ nav h1 {
     }
     to {
         opacity: 1;
-        transform: none;
+        transform: skewX(-16deg);
     }
 }
 
@@ -367,6 +394,34 @@ textarea:hover, textarea:focus {
     border-right: 2px solid;
     border-image: linear-gradient(to bottom, #ff9900, rgba(0,0,0,0)) 1;
     outline: none;
+}
+
+/* ------------------------ */
+/* ----- PROGRESS BAR ----- */
+/* ------------------------ */
+
+progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 1.2rem;
+    width: calc(100% - 1.2rem);
+    transform: skewX(-16deg);
+    transform-origin: bottom;
+    visibility: visible;
+}
+
+::-webkit-progress-value {
+    background-color: orange;
+}
+
+.progressBox {
+    position: relative;
+}
+
+.indcateurProgress {
+    position: absolute;
+    top: 0; left: 1em;
+    color: #fff;
 }
 
 /* ============================ */

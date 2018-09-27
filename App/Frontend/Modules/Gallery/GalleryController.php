@@ -23,6 +23,14 @@ class GalleryController extends BackController {
         $this->page->addVar('rightNav', $nav->getRightNav());
     }
 
+    public function executeGallery(HTTPRequest $request) {
+        $this->page->addVar('title', 'Gallerie');
+
+        $nav = new Nav('gallery');
+        $this->page->addVar('leftNav', $nav->getLeftNav());
+        $this->page->addVar('rightNav', $nav->getRightNav());
+    }
+
     public function executeItem(HTTPRequest  $request) {
         $itemId = $request->getData('id');
 

@@ -3,15 +3,22 @@
         <nav class="leftNav">
             <?= $leftNav ?>
         </nav>
-        <img src="images/accueil.jpg"/>
     </div>
 
     <div class="contentSectionRight">
         <nav class="rightNav">
             <?= $rightNav ?>
         </nav>
-        <main>
-
-        </main>
+        <h2><?= $catName ?></h2>
+        <?php
+        foreach ($catItems as $catItem) {
+            ?>
+            <div class="galleryItem">
+                <img src="" />
+                <span>Réalisé le :</span>
+            </div>
+        <?php
+        }
+        ?>
     </div>
 </div>
