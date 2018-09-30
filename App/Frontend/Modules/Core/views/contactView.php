@@ -36,6 +36,17 @@
         </section>
         <section>
             <h2>Autres moyens de contact</h2>
+            <ul>
+                <li>
+                    173 rue de Paris, 53000 Laval
+                </li>
+                <li>
+                    07 89 47 79 44
+                </li>
+                <li>
+                    @Ayolyan
+                </li>
+            </ul>
         </section>
     </div>
 </div>

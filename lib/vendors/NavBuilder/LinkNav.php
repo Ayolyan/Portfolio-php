@@ -23,7 +23,7 @@ class LinkNav {
                             );
     
     public function __construct($pageName) {
-        $this->_link = $pageName;
+        $this->_link = '/' . $pageName;
         $this->_text = self::TEXTLINKS[$pageName];
         $this->_svgLink = self::SVGLINKS[$pageName];
     }

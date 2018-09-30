@@ -9,26 +9,29 @@
         <nav class="rightNav">
             <?= $rightNav ?>
         </nav>
-        <h2>Mes dernières création</h2>
-        <a href="#prog"><button>Programmation</button></a>
-        <a href="#audiovisuel"><button>Audiovisuel</button></a>
+        <ul class="catSelector">
+            <li class="catSelected">Tous</li>
+            <li>Audio</li>
+            <li>Vidéo</li>
+            <li>Infographie</li>
+            <li>Programmation</li>
+        </ul>
+        <div class="itemsGallery">
+            <?php
+            foreach ($mixedItems as $item) {
+                ?>
+                <a href="/gallery/item-<?= $item["id"] ?>" data-cat="<?= strtolower($item["cats"]) ?>">
+                    <div>
+                        <div class="imgContainer <?= strtolower($item["cats"]) ?>">
+                            <img src="<?= $item["miniatureImgLink"] ?>"/>
+                        </div>
+                        <h4><?= $item["name"] ?></h4>
+                    </div>
+                </a>
+            <?php
+            }
+            ?>
+        </div>
     </div>
 </div>
-<div class="contentSection" id="prog">
-    <div>
-
-    </div>
-    <div>
-        <h2>Programmation</h2>
-        <a href="">En voir plus...</a>
-    </div>
-</div>
-<div class="contentSection" id="audiovisuel">
-    <div>
-
-    </div>
-    <div>
-        <h2>Audiovisuel</h2>
-        <a href="">En voir plus...</a>
-    </div>
-</div>
+<script src="/js/gallery.js"></script>

@@ -1,6 +1,8 @@
 <?php
-require_once('model/Manager.php');
 
+namespace Model;
+
+use AyolyanFram\Manager;
 use \Entity\GalleryItem;
 
 abstract class GalleryItemManager extends Manager {

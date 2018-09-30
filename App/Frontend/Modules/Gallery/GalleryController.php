@@ -21,14 +21,11 @@ class GalleryController extends BackController {
         $nav = new Nav('gallery');
         $this->page->addVar('leftNav', $nav->getLeftNav());
         $this->page->addVar('rightNav', $nav->getRightNav());
-    }
 
-    public function executeGallery(HTTPRequest $request) {
-        $this->page->addVar('title', 'Gallerie');
+        $managerItem = $this->managers->getManagerOf('GalleryItem');
+        $mixedItems = $managerItem->getList();
 
-        $nav = new Nav('gallery');
-        $this->page->addVar('leftNav', $nav->getLeftNav());
-        $this->page->addVar('rightNav', $nav->getRightNav());
+        $this->page->addVar('mixedItems', $mixedItems);
     }
 
     public function executeItem(HTTPRequest  $request) {
@@ -37,8 +34,8 @@ class GalleryController extends BackController {
         $manager = $this->managers->getManagerOf('GalleryItem');
         $item = $manager->get($itemId);
 
-
-        $this->page->addVar('title', 'Gallerie');
+        $this->page->addVar('item', $item);
+        $this->page->addVar('title', 'Gallerie : '. $item["name"]);
 
         $nav = new Nav('gallery');
         $this->page->addVar('leftNav', $nav->getLeftNav());

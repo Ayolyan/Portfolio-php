@@ -1,4 +1,4 @@
-<div class="contentSection">
+<div class="contentSection ">
     <div class="contentSectionLeft">
         <nav class="leftNav">
             <?= $leftNav ?>
@@ -10,8 +10,9 @@
         <nav class="rightNav">
             <?= $rightNav ?>
         </nav>
-        <main>
-
-        </main>
+        <div>
+            <span class="namePerso">Yoan Bidet</span>
+            <span class="descPerso">Étudiant en deuxième année DUT MMI à Laval</span>
+        </div>
     </div>
 </div>

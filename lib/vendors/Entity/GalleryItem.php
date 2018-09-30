@@ -7,7 +7,8 @@ class GalleryItem extends Entity{
     
     // Properties
     protected $name;
-    protected $imgLink;
+    protected $mainImgLink;
+    protected $miniatureImgLink;
     protected $creationDate;
     protected $description;
     protected $cats;
@@ -16,11 +17,12 @@ class GalleryItem extends Entity{
     // GETTERS //
     // ******* //
 
-    public function getName()         { return $this->name; }
-    public function getImgLink()      { return $this->imgLink; }
-    public function getCreationDate() { return $this->creationDate; }
-    public function getDescription()  { return $this->description; }
-    public function getCats()         { return $this->cats; }
+    public function getName()             { return $this->name; }
+    public function getMainImgLink()      { return $this->mainImgLink; }
+    public function getMiniatureImgLink() { return $this->miniatureImgLink; }
+    public function getCreationDate()     { return $this->creationDate; }
+    public function getDescription()      { return $this->description; }
+    public function getCats()             { return $this->cats; }
 
     const NAME_INVALID = 1;
     const IMGLINK_INVALID = 2;
@@ -43,11 +45,21 @@ class GalleryItem extends Entity{
         }
     }
     
-    public function setImgLink($imgLink) {
+    public function setMainImgLink($imgLink) {
         $imgLink = (string)$imgLink;
         
         if (strlen($imgLink) >= 1 && strlen($imgLink) <= 250) {
-            $this->imgLink = $imgLink;
+            $this->mainImgLink = $imgLink;
+        } else {
+            $this->errors[] = self::IMGLINK_INVALID;
+        }
+    }
+
+    public function setMiniatureImgLink($imgLink) {
+        $imgLink = (string)$imgLink;
+
+        if (strlen($imgLink) >= 1 && strlen($imgLink) <= 250) {
+            $this->miniatureImgLink = $imgLink;
         } else {
             $this->errors[] = self::IMGLINK_INVALID;
         }
