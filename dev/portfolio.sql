@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 27 sep. 2018 à 20:13
+-- Généré le :  Dim 30 sep. 2018 à 17:06
 -- Version du serveur :  5.7.21
--- Version de PHP :  7.2.4
+-- Version de PHP :  5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -67,6 +67,16 @@ CREATE TABLE IF NOT EXISTS `contain_gitem` (
   KEY `CONTAIN_GITEM_GALLERY_CAT1_FK` (`idGalCat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `contain_gitem`
+--
+
+INSERT INTO `contain_gitem` (`idGalleryItem`, `idGalCat`) VALUES
+(4, 1),
+(5, 1),
+(2, 2),
+(3, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -92,33 +102,46 @@ CREATE TABLE IF NOT EXISTS `gallery_cat` (
   `idGalCat` int(11) NOT NULL AUTO_INCREMENT,
   `galCatName` varchar(50) NOT NULL,
   PRIMARY KEY (`idGalCat`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `gallery_cat`
 --
 
 INSERT INTO `gallery_cat` (`idGalCat`, `galCatName`) VALUES
-(1, 'Audiovisuel'),
-(2, 'Programmation');
+(1, 'Infographie'),
+(2, 'Programmation'),
+(3, 'Audio'),
+(4, 'Vidéo');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `gallery_items`
+-- Structure de la table `gallery_item`
 --
 
-DROP TABLE IF EXISTS `gallery_items`;
-CREATE TABLE IF NOT EXISTS `gallery_items` (
+DROP TABLE IF EXISTS `gallery_item`;
+CREATE TABLE IF NOT EXISTS `gallery_item` (
   `idGalleryItem` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
   `mainImgLink` varchar(250) NOT NULL,
   `miniatureImgLink` varchar(250) NOT NULL,
   `creationDate` date NOT NULL,
   `description` text NOT NULL,
-  `id` varchar(10) NOT NULL,
+  `idImgGal` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`idGalleryItem`),
-  UNIQUE KEY `GALLERY_ITEMS_IMG_GALLERY0_AK` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE KEY `GALLERY_ITEMS_IMG_GALLERY0_AK` (`idImgGal`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `gallery_item`
+--
+
+INSERT INTO `gallery_item` (`idGalleryItem`, `name`, `mainImgLink`, `miniatureImgLink`, `creationDate`, `description`, `idImgGal`) VALUES
+(2, 'Filyso', '/images/gallery/mainImg/filyso.png', 'images/gallery/miniatureImg/filyso.png', '2018-06-01', 'Filyso est un site web proposant des jeux autour des paroles de chansons.\r\nIl a été réalisé dans le cadre de mon projet de première année de DUT MMI', NULL),
+(3, 'Nuit de l\'info 2017', '/images/gallery/mainImg/nuit_de_linfo_2017.jpg', 'images/gallery/miniatureImg/nuit_de_linfo_2017.png', '2017-12-07', 'Les folles aventures de Papalpaga sont le fruit de 15h30 de travail en équipe durant lesquels le projet a été réalisé de A à Z.', NULL),
+(4, 'Article de presse : \"Live-streaming\"', '/images/gallery/mainImg/article_de_presse_live_streaming.png', 'images/gallery/miniatureImg/article_de_presse_live_streaming.png', '2018-05-15', 'Article de presse réalisé dans le cadre de cours de communication couplé à des cours de mise en page.', NULL),
+(5, 'Datavisualisation : \"Hellfest 2017\"', '/images/gallery/mainImg/datavisualisation_hellfest.png', 'images/gallery/miniatureImg/datavisualisation_hellfest.png', '2018-05-01', 'J\'ai souhaité réaliser une data-visualisation sur le thème du Hellfest 2017. Pour cela j\'ai repris les couleurs utilisées lors de cette édition sur les affiches et différents produits dérivés. Ainsi on retrouve le jaune et le noir en tant que couleurs principales. On retrouve également dans cette data-visualisation de nombreuses références musicales (chanteurs, guitare électrique, batterie, baguettes de batterie, médiator). J\'y ai aussi intégré les fameuses \'Hell hands\' et une bière, deux symboles qu\'on pourrait qualifier de représentatifs du Hellfest.', NULL);
 
 -- --------------------------------------------------------
 
@@ -141,9 +164,9 @@ CREATE TABLE IF NOT EXISTS `img` (
 
 DROP TABLE IF EXISTS `img_gallery`;
 CREATE TABLE IF NOT EXISTS `img_gallery` (
-  `id` varchar(10) NOT NULL,
+  `idImgGal` varchar(10) NOT NULL,
   `idGalleryItem` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`idImgGal`),
   UNIQUE KEY `IMG_GALLERY_GALLERY_ITEMS0_AK` (`idGalleryItem`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -162,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
   `idSkillsCat` int(11) DEFAULT NULL,
   PRIMARY KEY (`idSkill`),
   KEY `SKILLS_SKILLS_CAT0_FK` (`idSkillsCat`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `skills`
@@ -174,7 +197,8 @@ INSERT INTO `skills` (`idSkill`, `skillName`, `skillSvgLink`, `skillProgress`, `
 (3, 'PHP', '', 60, 1),
 (4, 'Anglais', '', 70, 2),
 (5, 'Allemand', '', 30, 2),
-(6, 'Permis de conduire B', 'images/skills/carIcon.svg', NULL, 3);
+(6, 'Permis de conduire B', 'images/skills/carIcon.svg', NULL, 3),
+(7, 'Java', '', 50, 1);
 
 -- --------------------------------------------------------
 
@@ -230,26 +254,26 @@ INSERT INTO `user` (`id`, `name`, `surname`, `status`, `pwd`) VALUES
 --
 ALTER TABLE `contain_gitem`
   ADD CONSTRAINT `CONTAIN_GITEM_GALLERY_CAT1_FK` FOREIGN KEY (`idGalCat`) REFERENCES `gallery_cat` (`idGalCat`),
-  ADD CONSTRAINT `CONTAIN_GITEM_GALLERY_ITEMS0_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_items` (`idGalleryItem`);
+  ADD CONSTRAINT `CONTAIN_GITEM_GALLERY_ITEMS0_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_item` (`idGalleryItem`);
 
 --
 -- Contraintes pour la table `contain_img`
 --
 ALTER TABLE `contain_img`
   ADD CONSTRAINT `CONTAIN_IMG_IMG0_FK` FOREIGN KEY (`id`) REFERENCES `img` (`id`),
-  ADD CONSTRAINT `CONTAIN_IMG_IMG_GALLERY1_FK` FOREIGN KEY (`id_IMG_GALLERY`) REFERENCES `img_gallery` (`id`);
+  ADD CONSTRAINT `CONTAIN_IMG_IMG_GALLERY1_FK` FOREIGN KEY (`id_IMG_GALLERY`) REFERENCES `img_gallery` (`idImgGal`);
 
 --
--- Contraintes pour la table `gallery_items`
+-- Contraintes pour la table `gallery_item`
 --
-ALTER TABLE `gallery_items`
-  ADD CONSTRAINT `GALLERY_ITEMS_IMG_GALLERY0_FK` FOREIGN KEY (`id`) REFERENCES `img_gallery` (`id`);
+ALTER TABLE `gallery_item`
+  ADD CONSTRAINT `GALLERY_ITEMS_IMG_GALLERY0_FK` FOREIGN KEY (`idImgGal`) REFERENCES `img_gallery` (`idImgGal`);
 
 --
 -- Contraintes pour la table `img_gallery`
 --
 ALTER TABLE `img_gallery`
-  ADD CONSTRAINT `IMG_GALLERY_GALLERY_ITEMS0_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_items` (`idGalleryItem`);
+  ADD CONSTRAINT `IMG_GALLERY_GALLERY_ITEMS0_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_item` (`idGalleryItem`);
 
 --
 -- Contraintes pour la table `skills`
