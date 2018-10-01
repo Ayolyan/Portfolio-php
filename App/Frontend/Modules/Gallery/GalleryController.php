@@ -31,10 +31,18 @@ class GalleryController extends BackController {
     public function executeItem(HTTPRequest  $request) {
         $itemId = $request->getData('id');
 
-        $manager = $this->managers->getManagerOf('GalleryItem');
-        $item = $manager->get($itemId);
+        $itemManager = $this->managers->getManagerOf('GalleryItem');
+        $item = $itemManager->get($itemId);
+
+        $linksManager = $this->managers->getManagerOf('GalleryItemLink');
+        $links = $linksManager->getListFromItem($itemId);
+
+        $imgsManager = $this->managers->getManagerOf('Img');
+        $imgs = $imgsManager->getListFromItem($itemId);
 
         $this->page->addVar('item', $item);
+        $this->page->addVar('links', $links);
+        $this->page->addVar('imgs', $imgs);
         $this->page->addVar('title', 'Gallerie : '. $item["name"]);
 
         $nav = new Nav('gallery');

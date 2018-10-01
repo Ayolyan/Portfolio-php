@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 30 sep. 2018 à 17:06
+-- Généré le :  lun. 01 oct. 2018 à 21:04
 -- Version du serveur :  5.7.21
--- Version de PHP :  5.6.35
+-- Version de PHP :  7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `contain_gitem` (
   `idGalleryItem` int(11) NOT NULL,
   `idGalCat` int(11) NOT NULL,
   PRIMARY KEY (`idGalleryItem`,`idGalCat`),
-  KEY `CONTAIN_GITEM_GALLERY_CAT1_FK` (`idGalCat`)
+  KEY `CONTAIN_GITEM_GALLERY_CAT0_FK` (`idGalCat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -72,24 +72,10 @@ CREATE TABLE IF NOT EXISTS `contain_gitem` (
 --
 
 INSERT INTO `contain_gitem` (`idGalleryItem`, `idGalCat`) VALUES
+(3, 1),
 (4, 1),
-(5, 1),
-(2, 2),
-(3, 2);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `contain_img`
---
-
-DROP TABLE IF EXISTS `contain_img`;
-CREATE TABLE IF NOT EXISTS `contain_img` (
-  `id` int(11) NOT NULL,
-  `id_IMG_GALLERY` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`,`id_IMG_GALLERY`),
-  KEY `CONTAIN_IMG_IMG_GALLERY1_FK` (`id_IMG_GALLERY`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(1, 2),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -128,20 +114,18 @@ CREATE TABLE IF NOT EXISTS `gallery_item` (
   `miniatureImgLink` varchar(250) NOT NULL,
   `creationDate` date NOT NULL,
   `description` text NOT NULL,
-  `idImgGal` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idGalleryItem`),
-  UNIQUE KEY `GALLERY_ITEMS_IMG_GALLERY0_AK` (`idImgGal`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`idGalleryItem`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `gallery_item`
 --
 
-INSERT INTO `gallery_item` (`idGalleryItem`, `name`, `mainImgLink`, `miniatureImgLink`, `creationDate`, `description`, `idImgGal`) VALUES
-(2, 'Filyso', '/images/gallery/mainImg/filyso.png', 'images/gallery/miniatureImg/filyso.png', '2018-06-01', 'Filyso est un site web proposant des jeux autour des paroles de chansons.\r\nIl a été réalisé dans le cadre de mon projet de première année de DUT MMI', NULL),
-(3, 'Nuit de l\'info 2017', '/images/gallery/mainImg/nuit_de_linfo_2017.jpg', 'images/gallery/miniatureImg/nuit_de_linfo_2017.png', '2017-12-07', 'Les folles aventures de Papalpaga sont le fruit de 15h30 de travail en équipe durant lesquels le projet a été réalisé de A à Z.', NULL),
-(4, 'Article de presse : \"Live-streaming\"', '/images/gallery/mainImg/article_de_presse_live_streaming.png', 'images/gallery/miniatureImg/article_de_presse_live_streaming.png', '2018-05-15', 'Article de presse réalisé dans le cadre de cours de communication couplé à des cours de mise en page.', NULL),
-(5, 'Datavisualisation : \"Hellfest 2017\"', '/images/gallery/mainImg/datavisualisation_hellfest.png', 'images/gallery/miniatureImg/datavisualisation_hellfest.png', '2018-05-01', 'J\'ai souhaité réaliser une data-visualisation sur le thème du Hellfest 2017. Pour cela j\'ai repris les couleurs utilisées lors de cette édition sur les affiches et différents produits dérivés. Ainsi on retrouve le jaune et le noir en tant que couleurs principales. On retrouve également dans cette data-visualisation de nombreuses références musicales (chanteurs, guitare électrique, batterie, baguettes de batterie, médiator). J\'y ai aussi intégré les fameuses \'Hell hands\' et une bière, deux symboles qu\'on pourrait qualifier de représentatifs du Hellfest.', NULL);
+INSERT INTO `gallery_item` (`idGalleryItem`, `name`, `mainImgLink`, `miniatureImgLink`, `creationDate`, `description`) VALUES
+(1, 'Filyso', '/images/gallery/mainImg/filyso.png', '/images/gallery/miniatureImg/filyso.png', '2018-06-01', 'Filyso est un site web proposant des jeux autour des paroles de chansons.'),
+(2, 'Nuit de l\'info 2017', '/images/gallery/mainImg/nuit_de_linfo_2017.jpg', 'images/gallery/miniatureImg/nuit_de_linfo_2017.png', '2017-12-07', 'Les folles aventures de Papalpaga sont le fruit de 15h30 de travail en Ã©quipe durant lesquels le projet a Ã©tÃ© rÃ©alisÃ© de A Ã  Z.'),
+(3, 'Article de presse : \"Live-streaming\"', '/images/gallery/mainImg/article_de_presse_live_streaming.png', '/images/gallery/miniatureImg/article_de_presse_live_streaming.png', '2018-05-15', 'Article de presse rÃ©alisÃ© dans le cadre de cours de communication couplÃ© Ã  des cours de mise en page.'),
+(4, 'Datavisualisation : \"Hellfest 2017\"', '/images/gallery/mainImg/datavisualisation_hellfest.png', '/images/gallery/miniatureImg/datavisualisation_hellfest.png', '2018-05-01', 'J\'ai souhaitÃ© rÃ©aliser une data-visualisation sur le thÃ¨me du Hellfest 2017. Pour cela j\'ai repris les couleurs utilisÃ©es lors de cette Ã©dition sur les affiches et diffÃ©rents produits dÃ©rivÃ©s. Ainsi on retrouve le jaune et le noir en tant que couleurs principales. On retrouve Ã©galement dans cette data-visualisation de nombreuses rÃ©fÃ©rences musicales (chanteurs, guitare Ã©lectrique, batterie, baguettes de batterie, mÃ©diator). J\'y ai aussi intÃ©grÃ© les fameuses \'Hell hands\' et une biÃ¨re, deux symboles qu\'on pourrait qualifier de reprÃ©sentatifs du Hellfest.');
 
 -- --------------------------------------------------------
 
@@ -151,24 +135,46 @@ INSERT INTO `gallery_item` (`idGalleryItem`, `name`, `mainImgLink`, `miniatureIm
 
 DROP TABLE IF EXISTS `img`;
 CREATE TABLE IF NOT EXISTS `img` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idImg` int(11) NOT NULL AUTO_INCREMENT,
   `imgLink` varchar(256) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `idGalleryItem` int(11) NOT NULL,
+  PRIMARY KEY (`idImg`),
+  KEY `IMG_GALLERY_ITEMS_FK` (`idGalleryItem`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `img`
+--
+
+INSERT INTO `img` (`idImg`, `imgLink`, `idGalleryItem`) VALUES
+(1, '/images/gallery/illustration/filyso/filyso_0', 1),
+(2, '/images/gallery/illustration/filyso/filyso_1', 1),
+(3, '/images/gallery/illustration/filyso/filyso_2', 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `img_gallery`
+-- Structure de la table `link`
 --
 
-DROP TABLE IF EXISTS `img_gallery`;
-CREATE TABLE IF NOT EXISTS `img_gallery` (
-  `idImgGal` varchar(10) NOT NULL,
+DROP TABLE IF EXISTS `link`;
+CREATE TABLE IF NOT EXISTS `link` (
+  `idLink` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `link` varchar(250) NOT NULL,
+  `iconLink` varchar(250) DEFAULT NULL,
   `idGalleryItem` int(11) NOT NULL,
-  PRIMARY KEY (`idImgGal`),
-  UNIQUE KEY `IMG_GALLERY_GALLERY_ITEMS0_AK` (`idGalleryItem`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`idLink`),
+  KEY `LINK_GALLERY_ITEMS_FK` (`idGalleryItem`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `link`
+--
+
+INSERT INTO `link` (`idLink`, `name`, `link`, `iconLink`, `idGalleryItem`) VALUES
+(1, 'Github', 'https://github.com/Filyso/Sprint-2', NULL, 1),
+(2, 'Filyso', 'https://projets.iut-laval.univ-lemans.fr/17mmi1pj02/php/', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -184,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
   `skillProgress` tinyint(4) DEFAULT NULL,
   `idSkillsCat` int(11) DEFAULT NULL,
   PRIMARY KEY (`idSkill`),
-  KEY `SKILLS_SKILLS_CAT0_FK` (`idSkillsCat`)
+  KEY `SKILLS_SKILLS_CAT_FK` (`idSkillsCat`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
@@ -197,8 +203,8 @@ INSERT INTO `skills` (`idSkill`, `skillName`, `skillSvgLink`, `skillProgress`, `
 (3, 'PHP', '', 60, 1),
 (4, 'Anglais', '', 70, 2),
 (5, 'Allemand', '', 30, 2),
-(6, 'Permis de conduire B', 'images/skills/carIcon.svg', NULL, 3),
-(7, 'Java', '', 50, 1);
+(6, 'Java', '', 50, 1),
+(7, 'Permis de conduire B', '/images/skills/carIcon.svg', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -253,33 +259,26 @@ INSERT INTO `user` (`id`, `name`, `surname`, `status`, `pwd`) VALUES
 -- Contraintes pour la table `contain_gitem`
 --
 ALTER TABLE `contain_gitem`
-  ADD CONSTRAINT `CONTAIN_GITEM_GALLERY_CAT1_FK` FOREIGN KEY (`idGalCat`) REFERENCES `gallery_cat` (`idGalCat`),
-  ADD CONSTRAINT `CONTAIN_GITEM_GALLERY_ITEMS0_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_item` (`idGalleryItem`);
+  ADD CONSTRAINT `CONTAIN_GITEM_GALLERY_CAT0_FK` FOREIGN KEY (`idGalCat`) REFERENCES `gallery_cat` (`idGalCat`),
+  ADD CONSTRAINT `CONTAIN_GITEM_GALLERY_ITEMS_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_item` (`idGalleryItem`);
 
 --
--- Contraintes pour la table `contain_img`
+-- Contraintes pour la table `img`
 --
-ALTER TABLE `contain_img`
-  ADD CONSTRAINT `CONTAIN_IMG_IMG0_FK` FOREIGN KEY (`id`) REFERENCES `img` (`id`),
-  ADD CONSTRAINT `CONTAIN_IMG_IMG_GALLERY1_FK` FOREIGN KEY (`id_IMG_GALLERY`) REFERENCES `img_gallery` (`idImgGal`);
+ALTER TABLE `img`
+  ADD CONSTRAINT `IMG_GALLERY_ITEMS_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_item` (`idGalleryItem`);
 
 --
--- Contraintes pour la table `gallery_item`
+-- Contraintes pour la table `link`
 --
-ALTER TABLE `gallery_item`
-  ADD CONSTRAINT `GALLERY_ITEMS_IMG_GALLERY0_FK` FOREIGN KEY (`idImgGal`) REFERENCES `img_gallery` (`idImgGal`);
-
---
--- Contraintes pour la table `img_gallery`
---
-ALTER TABLE `img_gallery`
-  ADD CONSTRAINT `IMG_GALLERY_GALLERY_ITEMS0_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_item` (`idGalleryItem`);
+ALTER TABLE `link`
+  ADD CONSTRAINT `LINK_GALLERY_ITEMS_FK` FOREIGN KEY (`idGalleryItem`) REFERENCES `gallery_item` (`idGalleryItem`);
 
 --
 -- Contraintes pour la table `skills`
 --
 ALTER TABLE `skills`
-  ADD CONSTRAINT `SKILLS_SKILLS_CAT0_FK` FOREIGN KEY (`idSkillsCat`) REFERENCES `skills_cat` (`idSkillsCat`);
+  ADD CONSTRAINT `SKILLS_SKILLS_CAT_FK` FOREIGN KEY (`idSkillsCat`) REFERENCES `skills_cat` (`idSkillsCat`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,6 +12,4 @@
     <route url="/gallery/item-([0-9]+)" module="Gallery" action="item" vars="id"/>
 
     <route url="/contact" module="Core" action="contact" />
-
-    <route url="/chinesePortrait" module="ChinesePortrait" action="index" />
 </routes>

@@ -20,12 +20,36 @@
         </section>
         <section>
             <h3>Liens</h3>
+            <ul class="itemUl">
+                <?php
+                foreach ($links as $link) {
+                ?>
+                    <li>
+                        <?php
+                        if ($link["iconLink"] != null && file_exists(__DIR__ . '/../../../../../Web/' . $skill["svgLink"])) {
+                            include(__DIR__ . '/../../../../../Web/' . $skill["svgLink"]);
+                        } else {
+                            include(__DIR__ . '/../../../../../Web/images/svgs/linkIcon.svg');
+                        }
+                        ?>
+                        <a href="<?= $link["link"] ?>"><?= $link["name"]?></a>
+                    </li>
+                <?php
+                }
+                ?>
+            </ul>
         </section>
         <section>
             <h3>Illustrations</h3>
-            <div class="imgGallery">
-
-            </div>
+            <ul class="imgGallery">
+<!--                --><?php
+//                foreach ($imgs as $img) {
+//                    ?>
+                    <li><img src="<?= $imgs[0]["imgLink"] ?>" /></li>
+<!--                --><?php
+//                }
+//                ?>
+            </ul>
         </section>
     </div>
 </div>

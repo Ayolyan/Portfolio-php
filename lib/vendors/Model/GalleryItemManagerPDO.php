@@ -33,7 +33,7 @@ class GalleryItemManagerPDO extends GalleryItemManager {
     }
 
     public function get($id) {
-        $request = $this->dao->prepare('SELECT idGalleryItem AS "id", name, mainImgLink, miniatureImgLink, creationDate, description FROM gallery_item WHERE idGalleryItem=' . $id);
+        $request = $this->dao->prepare('SELECT idGalleryItem AS "id", name, mainImgLink, miniatureImgLink, creationDate, description FROM gallery_item WHERE idGalleryItem=:id');
         $request->bindValue(':id', (int) $id, \PDO::PARAM_INT);
         $request->execute();
 
@@ -45,8 +45,19 @@ class GalleryItemManagerPDO extends GalleryItemManager {
     }
 
     public function getList($start = -1, $limit = -1) {
-        //$request = 'SELECT idGalleryItem AS "id", name, mainImgLink, miniatureImgLink, creationDate, description FROM gallery_item ORDER BY creationDate DESC';
-        $request = 'SELECT gallery_item.idGalleryItem AS "id", name, mainImgLink, miniatureImgLink, creationDate, description, galCatName AS "cats" FROM gallery_item INNER JOIN contain_gitem ON gallery_item.idGalleryItem = contain_gitem.idGalleryItem INNER JOIN gallery_cat ON gallery_cat.idGalCat = contain_gitem.idGalCat ORDER BY creationDate DESC';
+//SELECT gallery_item.idGalleryItem AS "id", gallery_item.name, mainImgLink, miniatureImgLink, creationDate, description, galCatName AS "cats", links.idLinks, imgs.idImgs FROM gallery_item
+//INNER JOIN contain_gitem ON gallery_item.idGalleryItem = contain_gitem.idGalleryItem
+//INNER JOIN gallery_cat ON gallery_cat.idGalCat = contain_gitem.idGalCat
+//LEFT OUTER JOIN (SELECT link.idGalleryItem, GROUP_CONCAT(link.idLink) AS "idLinks" FROM link GROUP BY link.idGalleryItem) links ON links.idGalleryItem = gallery_item.idGalleryItem
+//LEFT OUTER JOIN (SELECT img.idGalleryItem, GROUP_CONCAT(img.idImg) AS "idImgs" FROM img GROUP BY img.idGalleryItem) imgs ON imgs.idGalleryItem = gallery_item.idGalleryItem
+//ORDER BY creationDate DESC
+        $request = '
+SELECT gallery_item.idGalleryItem AS "id", gallery_item.name, mainImgLink, miniatureImgLink, creationDate, description, galCatName AS "cats", links.linksIds, imgs.imgsIds FROM gallery_item
+INNER JOIN contain_gitem ON gallery_item.idGalleryItem = contain_gitem.idGalleryItem
+INNER JOIN gallery_cat ON gallery_cat.idGalCat = contain_gitem.idGalCat
+LEFT OUTER JOIN (SELECT link.idGalleryItem, GROUP_CONCAT(link.idLink) AS "linksIds" FROM link GROUP BY link.idGalleryItem) links ON links.idGalleryItem = gallery_item.idGalleryItem
+LEFT OUTER JOIN (SELECT img.idGalleryItem, GROUP_CONCAT(img.idImg) AS "imgsIds" FROM img GROUP BY img.idGalleryItem) imgs ON imgs.idGalleryItem = gallery_item.idGalleryItem
+ORDER BY creationDate DESC';
         if ($start != -1 || $limit != -1) {
             $request .= ' LIMIT ' . (int) $limit . ' OFFSET ' . (int) $start;
         }

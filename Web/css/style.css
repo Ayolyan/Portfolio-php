@@ -170,12 +170,22 @@ p {
 .contentSection h3 {
     display: inline-block;
     font-size: 1.1rem;
-    margin: 0;
+    margin: 1rem 0;
     padding: 8px;
     position: relative;
     color: #ff9900;
 }
 
+.contentSectionRight>section {
+    transform: skewX(0deg);
+    transform-origin: top;
+}
+.contentSectionRight>section>*:not(.imgGallery) {
+    transform: skewX(16deg);
+    transform-origin: top;
+}
+
+/* h4 */
 .contentSection h4 {
     color: #111111;
     margin: 0.5em 0;
@@ -285,6 +295,69 @@ nav h1 {
         opacity: 1;
         transform: skewX(-16deg);
     }
+}
+
+/* ---------------------- */
+/* ----- ITEM UL ----- */
+/* ---------------------- */
+
+.itemUl {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.itemUl  li {
+    align-items: center;
+    background-color: #ffffff;
+    display: flex;
+    height: 3rem;
+    margin: 0 calc(1rem + 0.6 * 3rem) 0 0;
+    padding: 0 1rem 0 0;
+    position: relative;
+}
+
+.itemUl li::after,
+.itemUl li::before {
+    content: '';
+    display: block;
+    position: absolute;
+    transform: skewX(-16deg);
+}
+.itemUl li::after {
+    background-color: #ffffff;
+    top: 0; left: 0; bottom: 0; right: 0;
+    transform-origin: bottom;
+    z-index: -1;
+}
+.itemUl li::before {
+    background-color: #ff9900;
+    height: inherit;
+    top: 0; left: 0;
+    transform-origin: top;
+    width: calc(1.3 * 3rem);
+}
+
+.itemUl a {
+    color: #0077ff;
+    text-decoration: none;
+}
+
+.itemUl a:hover {
+    text-decoration: underline #0077ff;
+}
+
+.itemUl svg {
+    background-color: #ff9900;
+    box-sizing: border-box;
+    fill: #ffffff;
+    height: 3rem;
+    padding: 10px;
+    position: relative;
+    margin: 0 1rem 0 0;
+    width: 3rem;
+    z-index: 1;
 }
 
 /* ---------------------- */
@@ -433,6 +506,11 @@ button::before {
     justify-content: center;
     margin: auto;
 }
+.buttonRack button {
+    cursor: pointer;
+    fill: #ffffff;
+    padding: 2rem;
+}
 .buttonRack a:not(:first-child) button{
     margin: 0 0 0 calc(2rem + 0.3 * 15vh);
 }
@@ -564,12 +642,11 @@ progress {
 }
 
 .skillsSection {
-    transform: skewX(0deg);
     margin: 0 0 1rem 0;
 }
 .skillsSection>* {
     transform: skewX(16deg);
-    transform-origin: bottom;
+    transform-origin: bottom !important;
 }
 
 .skillItem h4 {
@@ -682,6 +759,30 @@ progress {
 .catSelected::before,
 .catSelector li:not(.catSelected):hover::before {
     border-right: none;
+    transform-origin: top;
+}
+
+/* Img Gallery */
+.imgGallery {
+    border: 2px solid #ff9900;
+    flex-wrap: nowrap;
+    height: 30vh;
+    overflow: hidden;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+}
+
+.imgGallery li {
+    display: inline-block;
+    height: inherit;
+    list-style-type: none;
+    padding: 0 1rem;
+}
+
+.imgGallery img {
+    height: inherit;
+    transform: skewX(16deg);
     transform-origin: top;
 }
 

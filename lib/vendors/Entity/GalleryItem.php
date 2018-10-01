@@ -12,6 +12,8 @@ class GalleryItem extends Entity{
     protected $creationDate;
     protected $description;
     protected $cats;
+    protected $linksIds;
+    protected $imgsIds;
     
     // ******* //
     // GETTERS //
@@ -23,6 +25,9 @@ class GalleryItem extends Entity{
     public function getCreationDate()     { return $this->creationDate; }
     public function getDescription()      { return $this->description; }
     public function getCats()             { return $this->cats; }
+    public function getLinksIds()         { return $this->linksIds; }
+    public function getImgsIds()          { return $this->imgsIds; }
+
 
     const NAME_INVALID = 1;
     const IMGLINK_INVALID = 2;
@@ -71,6 +76,20 @@ class GalleryItem extends Entity{
     
     public function setDescription($description) {
         $this->description = $description;
+    }
+
+    /**
+     * @param mixed $imgsIds
+     */
+    public function setImgsIds($imgsIds) {
+        $this->imgsIds = $imgsIds;
+    }
+
+    /**
+     * @param mixed $linksIds
+     */
+    public function setLinksIds($linksIds) {
+        $this->linksIds = $linksIds;
     }
     
     // ********* //
