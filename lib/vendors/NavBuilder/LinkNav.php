@@ -19,7 +19,7 @@ class LinkNav {
                             'skills'          => 'Compétences',
                             'chinesePortrait' => 'Portrait Chinois',
                             'gallery'         => 'Ma Gallerie',
-                            'contact'         => 'Contact'
+                            'contact'         => 'Me Contacter'
                             );
     
     public function __construct($pageName) {

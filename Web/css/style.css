@@ -95,8 +95,10 @@ p {
     animation: fadeFromRight 1s both;
     border-left: solid 2.1vw;
     border-image: linear-gradient(to right, #ffffff 8%, #ff9900 10%) 1 100%;
+    box-sizing: border-box;
     flex: 55;
     padding: 0 1.5rem;
+    max-width: 55vw;
     z-index: 100;
     transform-origin: top;
 }
@@ -475,7 +477,7 @@ textarea:hover, textarea:focus {
 /* ----- BUTTON ----- */
 /* ------------------ */
 
-button {
+.buttonRack button {
     background-color: #ff9900;
     border: none;
     height: 15vh;
@@ -483,8 +485,8 @@ button {
     width: 15vh;
 }
 
-button::after,
-button::before {
+.buttonRack button::after,
+.buttonRack button::before {
     background-color: #ff9900;
     content: '';
     display: block;
@@ -764,12 +766,38 @@ progress {
 
 /* Img Gallery */
 .imgGallery {
+    justify-content: center;
     border: 2px solid #ff9900;
-    flex-wrap: nowrap;
+    display: flex;
     height: 30vh;
     overflow: hidden;
-    padding: 0;
+    position: relative;
+}
+
+.imgGallery button {
+    background-color: #ff9900;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px;
+    position: absolute;
+    top: 0; bottom: 0;
+    z-index: 10;
+}
+.imgGallery button:first-of-type {
+    left: 0;
+}
+.imgGallery button:last-of-type {
+    right: 0;
+}
+
+.imgGallery ul {
+    display: flex;
+    height: inherit;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    /*overflow: hidden;*/
     white-space: nowrap;
 }
 

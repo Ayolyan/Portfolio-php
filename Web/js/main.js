@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", initialised);
 
 function initialised() {
-    window.addEventListener('scroll', scrollAnimation);
+    if ( document.querySelectorAll(".contentSection").length > 1) {
+        window.addEventListener('scroll', scrollAnimation);
+    }
 }
 
 function scrollAnimation() {

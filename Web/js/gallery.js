@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", init);
 
-function init() {
+function init(evt) {
     var listLi = document.querySelectorAll(".catSelector li");
     for (var li of listLi) {
         li.addEventListener("click", changeCat);
     }
 }
 
-function changeCat() {
+function changeCat(evt) {
     var itemsGallery = document.querySelectorAll(".itemsGallery a");
 
     for (var item of itemsGallery) {

@@ -18,6 +18,9 @@
                 <?= $item["description"] ?>
             </p>
         </section>
+        <?php
+        if (isset($links) && $links != []) {
+        ?>
         <section>
             <h3>Liens</h3>
             <ul class="itemUl">
@@ -39,17 +42,29 @@
                 ?>
             </ul>
         </section>
+        <?php
+        }
+        if (isset($imgs) && $imgs != []) {
+        ?>
         <section>
             <h3>Illustrations</h3>
-            <ul class="imgGallery">
-<!--                --><?php
-//                foreach ($imgs as $img) {
-//                    ?>
-                    <li><img src="<?= $imgs[0]["imgLink"] ?>" /></li>
-<!--                --><?php
-//                }
-//                ?>
-            </ul>
+            <div class="imgGallery">
+                <button><</button>
+                <ul>
+                    <?php
+                    foreach ($imgs as $img) {
+                    ?>
+                        <li><img src="<?= $img["imgLink"] ?>" /></li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+                <button>></button>
+            </div>
         </section>
+            <?php
+        }
+        ?>
     </div>
 </div>
+<script src="/js/itemGallery.js"></script>
