@@ -29,13 +29,20 @@ function moveImgLeft(evt) {
 
 function bigImage(evt) {
     var divBigImg = document.createElement("div");
+    var closeBtn =  document.createElement("button");
     var cloneImg = this.cloneNode();
 
-    divBigImg.style.position = "fixed";
-    divBigImg.style.height = "calc(100vh - 15px)";
-    divBigImg.style.top = "15px";
-    divBigImg.style.left = "15px";
-    divBigImg.style.width = "calc(100vw - 15px)";
+    divBigImg.id = "bigImageBox";
+    divBigImg.classList.add("bigImageBox");
 
+    closeBtn.textContent = "✖";
+    closeBtn.addEventListener("click", closeBigImage);
+
+    divBigImg.appendChild(closeBtn);
     divBigImg.appendChild(cloneImg);
+    document.querySelector('body').appendChild(divBigImg);
+}
+
+function closeBigImage() {
+    document.getElementById("bigImageBox").remove();
 }
