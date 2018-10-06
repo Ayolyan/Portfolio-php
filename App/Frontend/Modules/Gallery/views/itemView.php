@@ -11,7 +11,7 @@
             <?= $rightNav ?>
         </nav>
         <h2><?= $item["name"] ?></h2>
-        <span><?= $item["creationDate"]?></span>
+        <span class="creationDate"><?= $item["creationDate"]?></span>
         <section>
             <h3>Description</h3>
             <p>

@@ -30,6 +30,11 @@ class ChinesePortraitController extends BackController {
         $listCPItems = $manager->getList(0, $nbCPItems);
 
         $this->page->addVar('listCPItems', $listCPItems);
+
+        if ($this->app->getUser()->hasFlash()) {
+            $this->page->addVar("flash", true);
+            $this->page->addVar("flashInfos", $this->app->getUser()->getFlash());
+        }
     }
 
 }

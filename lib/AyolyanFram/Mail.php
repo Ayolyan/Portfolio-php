@@ -57,6 +57,12 @@ class Mail {
             $this->setReplyEmail($this->senderEmail);
         }
 
+        if (isset($options['sender'])) {
+            $this->setSender($options['sender']);
+        } else {
+            $this->setSenderEmail(strtok($this->senderEmail, '@'));
+        }
+
         if (isset($options['replyer'])) {
             $this->setReplyer($options['replyer']);
         } elseif (isset($options['replyEmail'])) {
@@ -65,11 +71,6 @@ class Mail {
             $this->setReplyer($this->sender);
         }
 
-        if (isset($options['sender'])) {
-            $this->setSender($options['sender']);
-        } else {
-            $this->setSenderEmail(strtok($this->senderEmail, '@'));
-        }
     }
 
     public function send() {

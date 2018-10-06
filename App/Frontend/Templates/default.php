@@ -13,6 +13,11 @@
 
 <body>
     <?= $content ?>
+    <?php
+        if (isset($_SESSION['flash'])) {
+            include("flashPopupTemplate.php");
+        }
+    ?>
 </body>
 
 </html>

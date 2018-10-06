@@ -764,6 +764,13 @@ progress {
     transform-origin: top;
 }
 
+.creationDate {
+    color: #ff9900;
+    font-weight: bold;
+    margin: 0 1rem;
+    transform: skewX(0deg);
+}
+
 /* Img Gallery */
 .imgGallery {
     justify-content: center;

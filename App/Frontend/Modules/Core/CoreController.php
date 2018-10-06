@@ -41,6 +41,8 @@ class CoreController extends BackController {
                 ]
             );
             $mail->send();
+            $this->app->getUser()->setFlash("");
+            $this->page->addVar("flashInfo", $this->app->getUser()->getFlash());
         }
     }
 
