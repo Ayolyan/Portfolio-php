@@ -16,10 +16,10 @@ class UserManagerPDO extends UserManager {
     protected function add(User $user) {
         $request = $this->dao->prepare('INSERT INTO user(name, surname, status, pwd) VALUES(:name, :surname, :status, :pwd)');
 
-        $request->bindValue(':name',     $user->getName());
-        $request->bindValue(':surname',  $user->getSurname());
-        $request->bindValue(':status', $user->getStatus());
-        $request->bindValue(':pwd',   $user->getPwd());
+        $request->bindValue(':name',    $user->getName());
+        $request->bindValue(':surname', $user->getSurname());
+        $request->bindValue(':status',  $user->getStatus());
+        $request->bindValue(':pwd',     $user->getPwd());
 
         $request->execute();
     }
@@ -31,6 +31,19 @@ class UserManagerPDO extends UserManager {
     public function get($id) {
         $request = $this->dao->prepare('SELECT id, name, status, pwd FROM user WHERE id=:id');
         $request->bindValue(':id', (int) $id, \PDO::PARAM_INT);
+        $request->execute();
+
+        $request->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\User');
+
+        $user = $request->fetch();
+
+        return $user;
+    }
+
+    public function getConnexion($pseudo, $password) {
+        $request = $this->dao->prepare('SELECT id, name, status, pwd FROM user WHERE pseudo=:pseudo && pwd=:password');
+        $request->bindValue(':pseudo', $pseudo);
+        $request->bindValue(':password', $password);
         $request->execute();
 
         $request->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\User');

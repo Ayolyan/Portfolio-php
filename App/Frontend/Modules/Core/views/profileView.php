@@ -9,9 +9,17 @@
         <nav class="rightNav">
             <?= $rightNav ?>
         </nav>
+        <h2>Présentation</h2>
         <p>
-            Enchanté ! Je m'appelle Yoan Bidet, j'ai 20 ans et je suis en deuxième année d'un DUT Métiers du Multimédia et de l'Internet (MMI) à l'IUT de Laval.
+            Enchanté !
         </p>
+        <p>
+            Je m'appelle Yoan Bidet, j'ai 20 ans et je suis en deuxième année d'un DUT Métiers du Multimédia et de l'Internet (MMI) à l'IUT de Laval.
+        </p>
+        <p>
+            Je suis passioné par le développement informatique
+        </p>
+        <a href="/pdf/yoan_bidet_cv.pdf">Consulter mon CV (PDF)</a>
         <div class="buttonRack">
             <a href="#skills">
                 <button>Compétences</button>

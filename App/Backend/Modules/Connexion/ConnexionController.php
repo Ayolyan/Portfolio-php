@@ -17,10 +17,13 @@ class ConnexionController extends BackController {
         $this->page->addVar('title', 'Connexion');
 
         if ($request->postExists('login')) {
-            $login = $request->postData('login');
-            $password = $request->postData('password');
+            $login = strtolower($request->postData('login'));
+            $password = sha1($request->postData('password'));
 
-            if ($login == $this->app->getConfig()->get('login') && $password == $this->app->getConfig()->get('pass')) {
+            $userManager = $this->managers->getManagerOf("User");
+            $user = $userManager->getConnexion($login, $password);
+
+            if ($user != null && $user["status"] == "admin") {
                 $this->app->getUser()->setAuthenticated(true);
                 $this->app->getHttpResponse()->redirect('.');
             } else {

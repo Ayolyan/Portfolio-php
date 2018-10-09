@@ -36,6 +36,14 @@ abstract class UserManager extends Manager {
     abstract public function get($id);
 
     /**
+     * Method which return the user which correspond to the couple pseudo-password
+     * @param string $pseudo The pseudo of the user in database
+     * @param string $password The password of the user in database
+     * @return User
+     */
+    abstract public function getConnexion($pseudo, $password);
+
+    /**
      * Method which modify a user in database.
      * @param User $user
      * @return mixed

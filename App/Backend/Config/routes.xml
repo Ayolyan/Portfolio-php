@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
+    <route url="/admin" module="Core" action="index"></route>
+
     <route url="/admin/chinesePortrait" module="ChinesePortrait" action="index" />
     <route url="/admin/chinesePortraitItem/insert" module="ChinesePortrait" action="insert" />
     <route url="/admin/chinesePortraitItem/modify/([0-9]+)" module="ChinesePortrait" action="modify" vars="id" />
     <route url="/admin/chinesePortraitItem/delete/([0-9]+)" module="ChinesePortrait" action="delete" vars="id" />
+
+    <route url="/admin/gallery" module="Gallery" action="index" />
+    <route url="/admin/galleryItem/insert" module="Gallery" action="insertItem" />
+    <route url="/admin/galleryItem/modify/([0-9]+)" module="Gallery" action="modifyItem" vars="id" />
+    <route url="/admin/galleryItem/delete/([0-9]+)" module="Gallery" action="deleteItem" vars="id" />
+    <route url="/admin/galleryCat/insert" module="Gallery" action="insertCat" />
+    <route url="/admin/galleryCat/modify/([0-9]+)" module="Gallery" action="modifyCat" vars="id" />
+    <route url="/admin/galleryCat/delete/([0-9]+)" module="Gallery" action="deleteCat" vars="id" />
 </routes>

@@ -28,6 +28,7 @@ h1, h2, h3, h4 {
 
 p {
     font-size: 1rem;
+    margin: 0 0 1rem 0;
 }
 
 /* ------------------------------- */
@@ -562,6 +563,27 @@ progress {
     text-transform: uppercase;
 }
 
+.indexBody .contentSectionRight {
+    display: flex;
+    flex: 35;
+    flex-direction: column;
+}
+.indexMain {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: calc(4.5rem + 20px);
+}
+.indexMain  svg {
+    fill: #ff9900;
+    max-height: 60vh;
+    max-width: 60vh;
+    opacity: 0.5;
+    position: absolute;
+    z-index: -1;
+}
+
 /* ============================ */
 /* ===== PORTRAIT CHINOIS ===== */
 /* ============================ */
@@ -785,6 +807,7 @@ progress {
     background-color: #ff9900;
     border: none;
     color: #ffffff;
+    cursor: pointer;
     font-weight: bold;
     padding: 10px;
     position: absolute;
