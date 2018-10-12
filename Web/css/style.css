@@ -26,9 +26,34 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 
+a {
+    text-decoration: none;
+}
+
 p {
     font-size: 1rem;
     margin: 0 0 1rem 0;
+}
+
+.skewSide {
+    position: relative;
+}
+.skewSide::after,
+.skewSide::before {
+    background-color: inherit;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    transform: skewX(-16deg);
+    transition: background-color 0.5s;
+    z-index: -10;
+}
+.skewSide::after {
+    transform-origin: bottom;
+}
+.skewSide::before {
+    transform-origin: top;
 }
 
 /* ------------------------------- */
@@ -342,12 +367,14 @@ nav h1 {
     width: calc(1.3 * 3rem);
 }
 
-.itemUl a {
+.itemUl a,
+.precision>a{
     color: #0077ff;
     text-decoration: none;
 }
 
-.itemUl a:hover {
+.itemUl a:hover,
+.precision>a:hover {
     text-decoration: underline #0077ff;
 }
 
@@ -478,44 +505,50 @@ textarea:hover, textarea:focus {
 /* ----- BUTTON ----- */
 /* ------------------ */
 
+.buttonRack {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
 .buttonRack button {
+    align-items: center;
     background-color: #ff9900;
     border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    fill: #ffffff;
+    flex-direction: column;
+    font-size: 1em;
+    font-weight: bold;
+    justify-content: space-between;
     height: 15vh;
+    padding: 1em 0;
     position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.5s;
     width: 15vh;
 }
 
 .buttonRack button::after,
 .buttonRack button::before {
     background-color: #ff9900;
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-    transform: skewX(-16deg);
-    z-index: -10;
 }
-button::after {
-    transform-origin: bottom;
-}
-button::before {
-    transform-origin: top;
+.buttonRack button:hover,
+.buttonRack button:hover::after,
+.buttonRack button:hover::before {
+    background-color: #ff8000;
 }
 
-/* BUTTON RACK */
-.buttonRack {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-}
-.buttonRack button {
-    cursor: pointer;
-    fill: #ffffff;
-    padding: 2rem;
-}
 .buttonRack a:not(:first-child) button{
     margin: 0 0 0 calc(2rem + 0.3 * 15vh);
+}
+
+.buttonRack svg {
+    height: calc(100% - 3em);
+    width: calc(100% - 3em);
 }
 
 /* ------------------------ */
@@ -582,6 +615,23 @@ progress {
     opacity: 0.5;
     position: absolute;
     z-index: -1;
+}
+
+/* =================== */
+/* ===== PROFILE ===== */
+/* =================== */
+.precision {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.precision>a {
+    background-color: #ffffff;
+    padding: 0.8em;
+}
+.precision h3 {
+    margin: 1.5em 0;
 }
 
 /* ============================ */
@@ -725,10 +775,6 @@ progress {
 
 .itemsGallery h4 {
     font-size: 0.8rem;
-}
-
-.itemsGallery a {
-    text-decoration: none;
 }
 
 .itemsGallery img {

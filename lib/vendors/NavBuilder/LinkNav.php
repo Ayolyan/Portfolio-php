@@ -8,7 +8,7 @@ class LinkNav {
     private $_svgLink;
     
     const SVGLINKS  = array('index'           => __DIR__.'/../../../Web/images/svgs/homeIcon.svg',
-                            'profile'         => __DIR__.'/../../../Web/images/svgs/skillsIcon.svg',
+                            'profile'         => __DIR__.'/../../../Web/images/svgs/profileIcon.svg',
                             'skills'          => __DIR__.'/../../../Web/images/svgs/skillsIcon.svg',
                             'chinesePortrait' => __DIR__.'/../../../Web/images/svgs/chinesePortraitIcon.svg',
                             'gallery'         => __DIR__.'/../../../Web/images/svgs/galleryIcon.svg',
