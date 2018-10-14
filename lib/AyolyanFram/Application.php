@@ -58,7 +58,6 @@ abstract class Application {
         $controllerClass = 'App\\' . $this->name . '\\Modules\\' . $matchedRoute->getModule() . '\\' . $matchedRoute->getModule() . 'Controller';
 
         return new $controllerClass($this, $matchedRoute->getModule(), $matchedRoute->getAction());
-
     }
 
     abstract public function run();
