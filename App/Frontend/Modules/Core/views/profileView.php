@@ -14,10 +14,16 @@
             Enchanté !
         </p>
         <p>
-            Je m'appelle Yoan Bidet, j'ai 20 ans et je suis en deuxième année d'un DUT Métiers du Multimédia et de l'Internet (MMI) à l'IUT de Laval.
+            Je m'appelle Yoan Bidet, j'ai 20 ans et je suis étudiant en deuxième année de DUT Métiers du Multimédia et de l'Internet (MMI) à l'IUT de Laval.
         </p>
         <p>
-            Passionné par le développement informatique, j'ai appris à codé en autodidacte avant de me dirigé vers des formations spécialisés dans se domaine.
+            Passionné par le développement informatique, j'accrois mes compétences dans ce domaine, à travers des projets personnels ou liés à mes études.
+        </p>
+        <p>
+            Un peu touche-à-tout, je m'intéresse également à la gestion de projet, au domaine de l'audiovisuel et plus particulièrement au domaine du son.
+        </p>
+        <p>
+            Vous pouvez d'ailleurs retrouver mes réalisations dans <a href="/gallery">ma galerie</a>.
         </p>
         <div class="precision">
             <a href="/pdf/yoan_bidet_cv.pdf" class="skewSide">Consulter mon CV (PDF)</a>

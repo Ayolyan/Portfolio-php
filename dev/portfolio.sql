@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 01 oct. 2018 à 21:04
+-- Généré le :  Dim 14 oct. 2018 à 19:28
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -123,9 +123,9 @@ CREATE TABLE IF NOT EXISTS `gallery_item` (
 
 INSERT INTO `gallery_item` (`idGalleryItem`, `name`, `mainImgLink`, `miniatureImgLink`, `creationDate`, `description`) VALUES
 (1, 'Filyso', '/images/gallery/mainImg/filyso.png', '/images/gallery/miniatureImg/filyso.png', '2018-06-01', 'Filyso est un site web proposant des jeux autour des paroles de chansons.'),
-(2, 'Nuit de l\'info 2017', '/images/gallery/mainImg/nuit_de_linfo_2017.jpg', 'images/gallery/miniatureImg/nuit_de_linfo_2017.png', '2017-12-07', 'Les folles aventures de Papalpaga sont le fruit de 15h30 de travail en Ã©quipe durant lesquels le projet a Ã©tÃ© rÃ©alisÃ© de A Ã  Z.'),
-(3, 'Article de presse : \"Live-streaming\"', '/images/gallery/mainImg/article_de_presse_live_streaming.png', '/images/gallery/miniatureImg/article_de_presse_live_streaming.png', '2018-05-15', 'Article de presse rÃ©alisÃ© dans le cadre de cours de communication couplÃ© Ã  des cours de mise en page.'),
-(4, 'Datavisualisation : \"Hellfest 2017\"', '/images/gallery/mainImg/datavisualisation_hellfest.png', '/images/gallery/miniatureImg/datavisualisation_hellfest.png', '2018-05-01', 'J\'ai souhaitÃ© rÃ©aliser une data-visualisation sur le thÃ¨me du Hellfest 2017. Pour cela j\'ai repris les couleurs utilisÃ©es lors de cette Ã©dition sur les affiches et diffÃ©rents produits dÃ©rivÃ©s. Ainsi on retrouve le jaune et le noir en tant que couleurs principales. On retrouve Ã©galement dans cette data-visualisation de nombreuses rÃ©fÃ©rences musicales (chanteurs, guitare Ã©lectrique, batterie, baguettes de batterie, mÃ©diator). J\'y ai aussi intÃ©grÃ© les fameuses \'Hell hands\' et une biÃ¨re, deux symboles qu\'on pourrait qualifier de reprÃ©sentatifs du Hellfest.');
+(2, 'Nuit de l\'info 2017', '/images/gallery/mainImg/nuit_de_linfo_2017.jpg', 'images/gallery/miniatureImg/nuit_de_linfo_2017.png', '2017-12-07', '\"Les folles aventures de Papalpaga\" sont le fruit de 15h30 de travail en équipe durant lesquels le projet a été réalisé de A à Z.'),
+(3, 'Article de presse : \"Live-streaming\"', '/images/gallery/mainImg/article_de_presse_live_streaming.png', '/images/gallery/miniatureImg/article_de_presse_live_streaming.png', '2018-05-15', 'Article de presse réalisé dans le cadre de cours de communication couplé a des cours de mise en page.'),
+(4, 'Datavisualisation : \"Hellfest 2017\"', '/images/gallery/mainImg/datavisualisation_hellfest.png', '/images/gallery/miniatureImg/datavisualisation_hellfest.png', '2018-05-01', 'Dans le cadre de cours sur la data-visualisation, j\'ai souhaité en réalisé une sur le thème du Hellfest 2017.\r\nPour cela j\'ai repris les couleurs utilisées lors de cette édition sur les affiches et différents produits dérivés. Ainsi on retrouve le jaune et le noir en tant que couleurs principales. On retrouve également dans cette data-visualisation de nombreuses références musicales (chanteurs, guitare électrique, batterie, baguettes de batterie, médiator). J\'y ai aussi intégré les fameuses \'Hell hands\' et une bière, deux symboles qu\'on pourrait qualifier de représentatifs du Hellfest.');
 
 -- --------------------------------------------------------
 
@@ -240,16 +240,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(50) NOT NULL,
   `surname` varchar(50) NOT NULL,
   `status` enum('admin','user') NOT NULL,
+  `pseudo` varchar(50) NOT NULL,
   `pwd` varchar(40) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `pseudo` (`pseudo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `surname`, `status`, `pwd`) VALUES
-(1, 'bidet', 'yoan', 'admin', '');
+INSERT INTO `user` (`id`, `name`, `surname`, `status`, `pseudo`, `pwd`) VALUES
+(1, 'bidet', 'yoan', 'admin', 'ayolyan', '');
 
 --
 -- Contraintes pour les tables déchargées

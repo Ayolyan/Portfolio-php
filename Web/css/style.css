@@ -27,6 +27,7 @@ h1, h2, h3, h4 {
 }
 
 a {
+    color: #0077ff;
     text-decoration: none;
 }
 
@@ -369,7 +370,6 @@ nav h1 {
 
 .itemUl a,
 .precision>a{
-    color: #0077ff;
     text-decoration: none;
 }
 
