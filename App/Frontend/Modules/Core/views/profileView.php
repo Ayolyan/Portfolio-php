@@ -3,7 +3,7 @@
         <nav class="leftNav">
             <?= $leftNav ?>
         </nav>
-        <img src="images/profil.jpg" />
+        <img src="images/profil.jpg" alt="Yoan Bidet travaillant sur un ordinateur." />
     </div>
     <div class="contentSectionRight">
         <nav class="rightNav">

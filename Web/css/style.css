@@ -1,6 +1,3 @@
-/* DEFINITION POLICES DE CARACTERE */
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
 @font-face {
     font-family: "Stentiga";
     src: url("/fonts/stentiga.ttf");
@@ -332,6 +329,7 @@ nav h1 {
 
 .itemUl {
     display: flex;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -342,7 +340,7 @@ nav h1 {
     background-color: #ffffff;
     display: flex;
     height: 3rem;
-    margin: 0 calc(1rem + 0.6 * 3rem) 0 0;
+    margin: 0 calc(1rem + 0.6 * 3rem) 1rem 0;
     padding: 0 1rem 0 0;
     position: relative;
 }
@@ -739,19 +737,17 @@ progress {
 /* =================== */
 .catSelector {
     display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
 }
 
 .catSelector li {
     cursor: pointer;
+    margin: 0 1rem 0.5rem 0;
     padding: 3px;
     position: relative;
     text-transform: uppercase;
-}
-
-.catSelector li:not(:last-child) {
-    margin: 0 1rem 0 0;
 }
 
 .catSelected {
@@ -957,5 +953,72 @@ progress {
 
     nav a svg {
         width: 1em;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .contentSection {
+        flex-direction: column;
+    }
+
+    .contentSectionLeft {
+        animation: initial;
+        border: none;
+        position: absolute;
+        right: 0;
+        transform: skewX(-16deg);
+        z-index: 1000;
+    }
+    .contentSectionLeft img {
+        display: none;
+    }
+
+    .contentSectionRight,
+    .contentSection:nth-child(even)>.contentSectionRight {
+        border: none;
+        max-width: initial;
+        padding: 0 2rem;
+        text-align: center;
+        transform: translateX(0px);
+    }
+
+    .contentSectionRight>*,
+    .contentSectionRight>section>*:not(.imgGallery) {
+        transform: initial;
+    }
+
+    .itemsGallery>* {
+        width: initial;
+    }
+
+    .imgGallery img {
+        transform: initial;
+    }
+
+    .itemUl {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @keyframes fadeFromRight {
+        0% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+    @keyframes fadeFromLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0px);
+        }
     }
 }
