@@ -13,12 +13,20 @@ use AyolyanFram\Entity;
 
 class Img extends Entity {
 
+    protected $alt;
     protected $imgLink;
     protected $idGalleryItem;
 
     // ******* //
     // GETTERS //
     // ******* //
+
+    /**
+     * @return mixed
+     */
+    public function getAlt() {
+        return $this->alt;
+    }
 
     /**
      * @return int
@@ -37,6 +45,13 @@ class Img extends Entity {
     // ******* //
     // SETTERS //
     // ******* //
+
+    /**
+     * @param $alt
+     */
+    public function setAlt($alt) {
+        $this->alt = $alt;
+    }
 
     /**
      * @param mixed $idGalleryItem

@@ -3,7 +3,7 @@
         <nav class="leftNav">
             <?= $leftNav ?>
         </nav>
-        <img src="<?= $item["mainImgLink"] ?>"/>
+        <img src="<?= $item["mainImgLink"] ?>" alt="Illustration : <?= $item["name"] ?>" />
     </div>
 
     <div class="contentSectionRight">
@@ -54,7 +54,7 @@
                     <?php
                     foreach ($imgs as $img) {
                     ?>
-                        <li><img src="<?= $img["imgLink"] ?>" /></li>
+                        <li><img src="<?= $img["imgLink"] ?>" alt="<?= $img["alt"] ?>" /></li>
                     <?php
                     }
                     ?>

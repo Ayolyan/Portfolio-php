@@ -3,7 +3,7 @@
         <nav class="leftNav">
             <?= $leftNav ?>
         </nav>
-        <img src="images/gallery.jpg" alt="Galerie d'image" />
+        <img src="images/gallery.jpg" alt="Galerie d'images" />
     </div>
 
     <div class="contentSectionRight">
