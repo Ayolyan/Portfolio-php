@@ -16,7 +16,7 @@ use \NavBuilder\Nav;
 class GalleryController extends BackController {
 
     public function executeIndex(HTTPRequest $request) {
-        $this->page->addVar('title', 'Gallerie');
+        $this->page->addVar('title', 'Galerie');
 
         $nav = new Nav('gallery');
         $this->page->addVar('leftNav', $nav->getLeftNav());
@@ -43,7 +43,7 @@ class GalleryController extends BackController {
         $this->page->addVar('item', $item);
         $this->page->addVar('links', $links);
         $this->page->addVar('imgs', $imgs);
-        $this->page->addVar('title', 'Gallerie : '. $item["name"]);
+        $this->page->addVar('title', 'Galerie : '. $item["name"]);
 
         $nav = new Nav('gallery');
         $this->page->addVar('leftNav', $nav->getLeftNav());

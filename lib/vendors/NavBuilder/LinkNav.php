@@ -18,7 +18,7 @@ class LinkNav {
                             'profile'         => 'Mon Profil',
                             'skills'          => 'Compétences',
                             'chinesePortrait' => 'Portrait Chinois',
-                            'gallery'         => 'Ma Gallerie',
+                            'gallery'         => 'Ma Galerie',
                             'contact'         => 'Me Contacter'
                             );
     
@@ -44,8 +44,17 @@ class LinkNav {
         ob_start();
 ?>
             <a href="<?= $this->_link ?>" class="selectPage">
-                <?php echo file_get_contents($this->_svgLink) ?>
-                <h1><?= $this->_text ?></h1>
+                <?php echo file_get_contents($this->_svgLink);
+                if ($this->_text != 'Accueil') {
+                    ?>
+                        <h1><?= $this->_text ?></h1>
+                    <?php
+                } else {
+                    ?>
+                        <span><?= $this->_text ?></span>
+                    <?php
+                }
+                ?>
             </a>
 <?php 
         $titleNav = ob_get_clean();
