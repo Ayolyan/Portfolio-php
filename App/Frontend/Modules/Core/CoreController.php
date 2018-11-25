@@ -36,7 +36,7 @@ class CoreController extends BackController {
                 'yoan_bidet@orange.fr',
                 $request->postData('message'),
                 "[PORTFOLIO]" . $request->postData('subject'),
-                ['sender' => $request->postData('name') . $request->postData('surname'),
+                ['sender' => $request->postData('name'),
                     'priority' => Mail::MAX_PRIORITY
                 ]
             );
