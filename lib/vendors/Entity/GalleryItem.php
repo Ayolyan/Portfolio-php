@@ -13,7 +13,7 @@ class GalleryItem extends Entity{
     protected $description;
     protected $cats;
     protected $linksIds;
-    protected $imgsIds;
+    protected $mediasIds;
     
     // ******* //
     // GETTERS //
@@ -26,7 +26,7 @@ class GalleryItem extends Entity{
     public function getDescription()      { return $this->description; }
     public function getCats()             { return $this->cats; }
     public function getLinksIds()         { return $this->linksIds; }
-    public function getImgsIds()          { return $this->imgsIds; }
+    public function getMediasIds()        { return $this->mediasIds; }
 
 
     const NAME_INVALID = 1;
@@ -81,8 +81,8 @@ class GalleryItem extends Entity{
     /**
      * @param mixed $imgsIds
      */
-    public function setImgsIds($imgsIds) {
-        $this->imgsIds = $imgsIds;
+    public function setMediasIds($mediasIds) {
+        $this->mediasIds = $mediasIds;
     }
 
     /**

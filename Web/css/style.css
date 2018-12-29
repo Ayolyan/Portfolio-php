@@ -798,12 +798,16 @@ progress {
     z-index: -10;
 }
 
-.programmation::after {
+.prog::after {
     background-color: #0D58A6;
 }
 
 .infographie::after {
     background-color: #27AF82;
+}
+
+.video::after {
+    background-color: #faf02b;
 }
 
 .catSelector li:not(.catSelected):hover {
@@ -834,7 +838,7 @@ progress {
     transform: skewX(0deg);
 }
 
-/* Img Gallery */
+/* Media Gallery */
 .imgGallery {
     justify-content: center;
     border: 2px solid #ff9900;
@@ -883,7 +887,29 @@ progress {
     cursor: zoom-in;
     height: inherit;
     transform: skewX(16deg);
-    transform-origin: top;
+    transform-origin: center;
+}
+
+.vod {
+    position: relative;
+    transform: skewX(16deg);
+    transform-origin: center;
+}
+.vod img {
+    transform: none;
+}
+.vod::after {
+    background: url("/images/gallery/overlayVodOut.png");
+    background-size: contain;
+    cursor: pointer;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+.vod:hover::after {
+    background: url("/images/gallery/overlayVodHover.png");
+    background-size: contain;
 }
 
 /* BigImg */
@@ -897,7 +923,6 @@ progress {
     height: calc(100vh - 30px);
     justify-content: center;
     overflow: hidden;
-    padding: 5px;
     position: fixed;
     top: 15px; left: 15px;
     width: calc(100vw - 30px);
@@ -919,6 +944,7 @@ progress {
     position: absolute;
     top: 0; right: 0;
     width: 3rem;
+    z-index: 10;
 }
 .bigImageBox button::before {
     background-color: #ff9900;
@@ -928,7 +954,7 @@ progress {
     top: 0; left: 0; bottom: 0; right: 0;
     transform: skewX(16deg);
     transform-origin: bottom;
-    z-index: -10;
+    z-index: -1;
 }
 
 /* ************************* */

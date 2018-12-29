@@ -7,6 +7,7 @@ use \AyolyanFram\Entity;
 class GalleryCat extends Entity{
     
     // Properties
+    protected $slug;
     protected $name;
     protected $items;
 
@@ -21,6 +22,7 @@ class GalleryCat extends Entity{
     // ******* //
 
     public function getName() { return $this->name; }
+    public function getSlug() { return $this->slug; }
     
     // ******* //
     // SETTERS //
@@ -45,6 +47,13 @@ class GalleryCat extends Entity{
      */
     public function setItems($items) {
         $this->items = $items;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug) {
+        $this->slug = $slug;
     }
     
     // ********* //

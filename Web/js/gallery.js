@@ -11,7 +11,7 @@ function changeCat(evt) {
     var itemsGallery = document.querySelectorAll(".itemsGallery a");
 
     for (var item of itemsGallery) {
-        if (item.dataset.cat == this.textContent.toLowerCase() || this.textContent.toLowerCase() == 'tous') {
+        if (item.dataset.cat == this.dataset.slug || this.textContent.toLowerCase() == 'tous') {
             item.style.display = "initial";
         } else {
             item.style.display = "none";

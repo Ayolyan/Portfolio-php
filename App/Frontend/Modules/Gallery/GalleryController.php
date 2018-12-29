@@ -22,9 +22,13 @@ class GalleryController extends BackController {
         $this->page->addVar('leftNav', $nav->getLeftNav());
         $this->page->addVar('rightNav', $nav->getRightNav());
 
+        $managerCat = $this->managers->getManagerOf('GalleryCat');
+        $cats = $managerCat->getList();
+
         $managerItem = $this->managers->getManagerOf('GalleryItem');
         $mixedItems = $managerItem->getList();
 
+        $this->page->addVar('cats', $cats);
         $this->page->addVar('mixedItems', $mixedItems);
     }
 
@@ -37,12 +41,12 @@ class GalleryController extends BackController {
         $linksManager = $this->managers->getManagerOf('GalleryItemLink');
         $links = $linksManager->getListFromItem($itemId);
 
-        $imgsManager = $this->managers->getManagerOf('Img');
-        $imgs = $imgsManager->getListFromItem($itemId);
+        $mediasManager = $this->managers->getManagerOf('Media');
+        $medias = $mediasManager->getListFromItem($itemId);
 
         $this->page->addVar('item', $item);
         $this->page->addVar('links', $links);
-        $this->page->addVar('imgs', $imgs);
+        $this->page->addVar('medias', $medias);
         $this->page->addVar('title', 'Galerie : '. $item["name"]);
 
         $nav = new Nav('gallery');

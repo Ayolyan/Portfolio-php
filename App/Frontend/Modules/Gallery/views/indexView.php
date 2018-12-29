@@ -12,19 +12,22 @@
         </nav>
         <ul class="catSelector">
             <li class="catSelected">Tous</li>
-            <li>Audio</li>
-            <li>Vidéo</li>
-            <li>Infographie</li>
-            <li>Programmation</li>
+            <?php
+            foreach ($cats as $cat) {
+                ?>
+                <li data-slug="<?= $cat["slug"] ?>"><?= $cat["name"] ?></li>
+                <?php
+            }
+            ?>
         </ul>
         <div class="itemsGallery">
             <?php
             foreach ($mixedItems as $item) {
                 ?>
-                <a href="/gallery/item-<?= $item["id"] ?>" data-cat="<?= strtolower($item["cats"]) ?>">
+                <a href="/gallery/item-<?= $item["id"] ?>" data-cat="<?= mb_strtolower($item["cats"]) ?>">
                     <div>
                         <div class="imgContainer <?= strtolower($item["cats"]) ?>">
-                            <img src="<?= $item["miniatureImgLink"] ?>"/>
+                            <img src="<?= $item["miniatureImgLink"] ?>" alt="Miniature de : <?= $item["name"]?>" />
                         </div>
                         <h4><?= $item["name"] ?></h4>
                     </div>

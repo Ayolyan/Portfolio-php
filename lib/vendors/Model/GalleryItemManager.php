@@ -49,7 +49,7 @@ abstract class GalleryItemManager extends Manager {
     abstract protected function modify(GalleryItem $galleryItem);
 
     /**
-     * Method which register a skill.
+     * Method which register a gallery item.
      * @param GalleryItem $galleryItem The gallery item to register.
      * @return void
      */

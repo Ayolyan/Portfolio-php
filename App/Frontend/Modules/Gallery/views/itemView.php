@@ -44,7 +44,7 @@
         </section>
         <?php
         }
-        if (isset($imgs) && $imgs != []) {
+        if (isset($medias) && $medias != []) {
         ?>
         <section>
             <h3>Illustrations</h3>
@@ -52,9 +52,22 @@
                 <button><</button>
                 <ul>
                     <?php
-                    foreach ($imgs as $img) {
-                    ?>
-                        <li><img src="<?= $img["imgLink"] ?>" alt="<?= $img["alt"] ?>" /></li>
+                    foreach ($medias as $media) {
+                        ?>
+                        <li>
+                            <?php
+                            if ($media['type'] == 'image') {
+                                ?>
+                                <img src="<?= $media["mediaLink"] ?>" alt="<?= $media["alt"] ?>"/>
+                                <?php
+                            }
+                            if ($media['type'] == 'video') {
+                                ?>
+                                <div class="vod" data-vodid="<?= $media->getVideoId() ?>"></div>
+                                <?php
+                            }
+                            ?>
+                        </li>
                     <?php
                     }
                     ?>
